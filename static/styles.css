@@ -1,0 +1,301 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700;800&display=swap");
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: none;
+    user-select: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: 0.5s;    
+    background-color: rgb(0, 0, 0);
+}
+
+canvas {
+    position: absolute;
+    filter: blur(5px);
+}
+
+#green {
+    background: none;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: #00FF41;
+}
+
+.container {
+    position: relative;
+    width: 800px;
+    height: 500px;
+    margin: 20px;
+}
+
+.loginbG {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    height: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 5px 45px rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+}
+
+.loginbG .box {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loginbG .box h2 {
+    color: #fff;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.loginbG .box span {
+    cursor: pointer;
+    padding: 10px 20px;
+    background: #fff;
+    color: #000;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 20px;
+}
+
+.formbG {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: inset 0 5px 45px rgba(255, 255, 255, 0.15);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease-in-out;
+    overflow: hidden;
+}
+
+.formbG.left {
+    left: 50%;
+}
+
+.formbG.left .loginForm {
+    left: -100%;
+    transition-delay: 0.25s;
+}
+
+.formbG.right {
+    right: 50%;
+}
+
+.formbG.right .loginForm {
+    transition-delay: 0.25s;
+}
+
+.formbG .loginForm {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding: 50px;
+    transition: 0.5s;
+}
+
+.formbG .loginForm form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.formbG .loginForm form h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.formbG .loginForm form #blank {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    outline: none;
+    transition: 0.5s all;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid 1.4px;
+}
+
+.formbG .loginForm form #blank::placeholder {
+    font-size: 15px;
+}
+
+.formbG .loginForm form #btn {
+    width: 50%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    outline: none;
+    border-radius: 20px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px;
+    background: linear-gradient(to left, #00FF41, #00ff9d);
+    transition: 0.5s ease-in-out;
+    
+}
+
+.formbG .loginForm form #btn:hover {
+    transition: 0.5s ease-in-out;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+}
+
+.formbG .loginForm a {
+    text-decoration: none;
+    color: #333;
+}
+
+.formbG .loginForm a span {
+    text-decoration: none;
+    color: rgb(201, 123, 123);
+    transition: 0.5s ease-in-out;
+}
+
+.formbG .loginForm a span:hover {
+    transition: 0.5s ease-in-out;
+    text-shadow: 0 0 7px rgba(201, 123, 123, 0.2);
+}
+
+.formbG .signupForm {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding: 50px;
+    transition: 0.5s;
+}
+
+.formbG .signupForm form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.formbG .signupForm form h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.formbG .signupForm form #blank {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    outline: none;
+    transition: 0.5s all;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid 1.4px;
+}
+
+.formbG .signupForm form #blank::placeholder {
+    font-size: 15px;
+}
+
+.formbG .signupForm form #btn {
+    width: 50%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    outline: none;
+    border-radius: 20px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px;
+    background: linear-gradient(to left, #00FF41, #00ff9d);
+    transition: 0.5s ease-in-out;
+    
+}
+
+.formbG .signupForm form #btn:hover {
+    transition: 0.5s ease-in-out;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+}
+
+.formbG.left .signupForm {
+    left: 0;
+    transition-delay: 0.25s;
+}
+
+.formbG .signupForm {
+    left: 100%;
+    transition-delay: 0.25s;
+}
+
+@media (max-width: 991px) {
+    * {
+        overflow: none;
+        user-select: none;
+    }
+    .container {
+        max-width: 400px;
+        height: 650px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .container .loginbG {
+        top: 0;
+        height: 100%;
+    }
+    .formbG {
+        width: 105%;
+        height: 500px;
+        top: 0;
+        margin-left: -10px;
+        margin-right: 10px;
+        box-shadow: none;
+    }
+    .loginbG .box {
+        position: absolute;
+        width: 100%;
+        height: 150px;
+    }
+    .box.login {
+        top: 0;
+    }
+    .box.signup {
+        margin-top: 12cm;
+    }
+    .formbG.left {
+        top: 150px;
+        left: 0;
+    }
+}
