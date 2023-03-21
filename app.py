@@ -10,5 +10,10 @@ def signup():
     if request.method == "GET":
      return render_template("login-signup.html")
 
+@app.route("/forgot-password", methods=["POST", "GET"])
+def forgotpassword():
+    if request.method == "GET":
+        return render_template("forgot_password.html")
+
 if __name__ == "__main__":
     app.run(Debug=True)

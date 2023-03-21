@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename= 'styles.css')}}">
+    <meta name="description" content="Login Page with a Matrix Rain made from scratch">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login-signup.css')}}">
     <script src="https://kit.fontawesome.com/a10bb03e8b.js" crossorigin="anonymous"></script>
     <title>Login</title>
 </head>
@@ -16,35 +17,35 @@
         <div class="loginbG">
             <div class="box login">
                 <h2>Already have an Account ?</h2>
-                <span class="signin">Login <i class="fa-solid fa-arrow-right"></i></span>
+                <span class="signin">Login <i class="fa-solid fa-arrow-right" id="rotate"></i></span>
             </div>
             <div class="box signup">
                 <h2>Dont have an Account ?</h2>
-                <span class="signup">Sign Up <i class="fa-solid fa-arrow-right"></i></span>
+                <span class="signup">Register <i class="fa-solid fa-arrow-right"></i></span>
             </div>
         </div>
-        <div class="formbG">
+        <div class="formbG" id="formbG">
             <div class="loginForm">
                 <form>
                     <h3>Login</h3>
-                    <input type="text" id="blank" required="required" placeholder="Username" maxlength=12>
+                    <input type="text" id="blank" required="required" placeholder="Username">
                     <input type="password" id="blank" required="required" placeholder="Password">
                     <input type="submit" value="Login" id="btn">
-                    <a href="#">Forgot Password? <span>Click Here!</span></a>
+                    <a href="/forgot-password">Forgot Password? <span>Click Here!</span></a>
                 </form>
             </div>
             <div class="signupForm">
                 <form>
                     <h3>Sign Up</h3>
-                    <input type="text" id="blank" required="required" placeholder="Choose a Username">
-                    <input type="text" id="blank" required="required" placeholder="Email">
-                    <input type="password" id="blank" required="required" placeholder="Password">
-                    <input type="submit" value="Sign Up" id="btn">
+                    <input type="text" id="blank" required="required" placeholder="Choose a Username" class="one">
+                    <input type="text" id="blank" required="required" placeholder="Email" class="two">
+                    <input type="password" id="blank" required="required" placeholder="Password" class="three">
+                    <input type="submit" value="Sign Up" id="btn" class="four">
                 </form>
             </div>
         </div>
     </div>
 </body>
-<script src="{{url_for('static', filename= 'script.js')}}"></script>
+<script src="{{url_for('static', filename='js/login-signup.js')}}"></script>
 
 </html>
