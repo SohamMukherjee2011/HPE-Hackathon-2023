@@ -17,30 +17,32 @@
         <div class="loginbG">
             <div class="box login">
                 <h2>Already have an Account ?</h2>
-                <span class="signin">Login <i class="fa-solid fa-arrow-right" id="rotate"></i></span>
+                <span class="signin"><i class="fa-solid fa-arrow-right" id="rotate"></i></span>
             </div>
             <div class="box signup">
                 <h2>Dont have an Account ?</h2>
-                <span class="signup">Register <i class="fa-solid fa-arrow-right"></i></span>
+                <span class="signup"><i class="fa-solid fa-arrow-right"></i></span>
             </div>
         </div>
         <div class="formbG" id="formbG">
             <div class="loginForm">
-                <form>
+                <form method = "post">
                     <h3>Login</h3>
-                    <input type="text" id="blank" required="required" placeholder="Username">
-                    <input type="password" id="blank" required="required" placeholder="Password">
-                    <input type="submit" value="Login" id="btn">
-                    <a href="/forgot-password">Forgot Password? <span>Click Here!</span></a>
+                    <input type="text" id="blank" required="required" placeholder="Username" name="username">
+                    <input type="password" id="blank" required="required" placeholder="Password" name="password">
+                    <input type="submit" value="Login" id = 'btn' name="login">
                 </form>
+                <a href="forgot_password.html">Forgot Password? <span>Click Here!</span></a>
             </div>
             <div class="signupForm">
-                <form>
+                <form method = "post">
                     <h3>Sign Up</h3>
-                    <input type="text" id="blank" required="required" placeholder="Choose a Username" class="one">
-                    <input type="text" id="blank" required="required" placeholder="Email" class="two">
-                    <input type="password" id="blank" required="required" placeholder="Password" class="three">
-                    <input type="submit" value="Sign Up" id="btn" class="four">
+                    <input type="text" id="blank" required="required" placeholder="Choose a Username" class="one" name="username">
+                    <input type="text" id="blank" required="required" placeholder="Email" class="two" name="email">
+                    <input type="password" id="blank" required="required" placeholder="Password" class="three" name="password">
+                    <input type="text" id="blank" placeholder="First Name" class="four" name="firstname">
+                    <input type="text" id="blank" placeholder="Last Name" class="five" name="lastname">
+                    <input type="submit" value="Sign Up" id="btn" class="six" name="signup">
                 </form>
             </div>
         </div>
