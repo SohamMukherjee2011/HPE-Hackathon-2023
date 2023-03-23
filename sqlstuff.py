@@ -11,7 +11,6 @@ def config():
 
     #project-specific db checking if exists
     cursor.execute("SHOW DATABASES")
-    i = 0
     global dblist
     dblist = []
     for x in cursor:
@@ -23,13 +22,28 @@ def config():
         dbname = dbname.replace(',', '')
         dbname = dbname.replace("'", '')
         dblist.append(dbname)
-        i = i + 1
     if 'main' in dblist:
         cursor.execute("USE main")
+        # cursor.execute("SHOW TABLES")
+        # global tablelist
+        # tablelist = []
+        # for x in cursor:
+        #     tablename = str(x)
+        #     #removing (,),' and , from the db name
+        #     tablename = tablename.replace('(','')
+        #     tablename = tablename.replace(')','')
+        #     tablename = tablename.replace("'",'')
+        #     tablename = tablename.replace(',','')
+        #     tablelist.append(dbname)
+        # print(tablelist)
+        # if 'users' not in tablelist:
+        #     cursor.execute("CREATE TABLE users(email VARCHAR(255) PRIMARY KEY, password VARCHAR(255), firstname VARCHAR(255), lastname VARCHAR(255), companyname VARCHAR(255));")
+        #     mydb.commit()
     else:
         cursor.execute("CREATE DATABASE main;")
         cursor.execute("USE main")
-        cursor.execute("CREATE TABLE user(username VARCHAR(255) PRIMARY KEY, email VARCHAR(255), password VARCHAR(255), firstname VARCHAR(255), lastname VARCHAR(255), companyname VARCHAR(255));")
+        cursor.execute("CREATE TABLE users(email VARCHAR(255) PRIMARY KEY, password VARCHAR(255), firstname VARCHAR(255), lastname VARCHAR(255), companyname VARCHAR(255));")
+        mydb.commit()
     print('config done')
 
 def showall(table):
@@ -38,9 +52,18 @@ def showall(table):
     dblist = cursor.fetchall()
     return dblist
 
-def signupInsert(tablename, username, password, firstname, lastname, email, companyname):
-    sql = "INSERT INTO " + tablename + "(username, email, password, firstname, lastname, companyname)" + "VALUES (%s, %s, %s, %s, %s, %s);"
-    val = (username, email, password, firstname, lastname, companyname)
+def signupInsert(tablename, email, password, firstname, lastname, companyname):
+    sql = "INSERT INTO " + tablename + "(email, password, firstname, lastname, companyname)" + "VALUES (%s, %s, %s, %s, %s);"
+    val = (email, password, firstname, lastname, companyname)
     cursor.execute(sql, val)
     mydb.commit()
 
+def update(tablename, columnlist, valuelist, conditionfield, conditionvalue):
+    length = len(columnlist)
+    i = 0
+    while i < length:
+        sql = "UPDATE " + tablename + " SET " + columnlist[i] + "='" + str(valuelist[i]) + "' WHERE " + conditionfield + "='" + str(conditionvalue) + "';"
+        print(sql)
+        cursor.execute(sql)
+        mydb.commit()
+        i += 1

@@ -30,7 +30,9 @@ canvas {
     font-weight: 500;
     color: #00FF41;
 }
-
+.invalid {
+    color: red;
+}
 .container {
     position: relative;
     width: 800px;

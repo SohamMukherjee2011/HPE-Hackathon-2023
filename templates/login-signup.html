@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Login Page with a Matrix Rain made from scratch">
+    <meta description="Matrix Rain made from scratch">
     <link rel="stylesheet" href="{{url_for('static', filename='css/login-signup.css')}}">
     <script src="https://kit.fontawesome.com/a10bb03e8b.js" crossorigin="anonymous"></script>
     <title>Login</title>
@@ -28,7 +29,17 @@
             <div class="loginForm">
                 <form method = "post">
                     <h3>Login</h3>
-                    <input type="text" id="blank" required="required" placeholder="Username" name="username">
+                    {% with messages = get_flashed_messages()%}
+                        {%if messages%}
+                            {%for msg in messages%}
+                                {%if msg == "Wrong Password" or msg == "Invalid Email ID"%}
+                                    <p class="invalid">{{msg}}</p>
+                                {%endif%}
+                            {%endfor%}
+                        {%endif%}
+                    {%endwith%}
+                    <br>
+                    <input type="text" id="blank" required="required" placeholder="email" name="email">
                     <input type="password" id="blank" required="required" placeholder="Password" name="password">
                     <input type="submit" value="Login" id = 'btn' name="login">
                 </form>
@@ -37,13 +48,21 @@
             <div class="signupForm">
                 <form method = "post">
                     <h3>Sign Up</h3>
-                    <input type="text" id="blank" required="required" placeholder="Choose a Username" class="one" name="username">
+                    {% with messages = get_flashed_messages()%}
+                        {%if messages%}
+                            {%for msg in messages%}
+                                {%if msg == "Email ID already in use" %}
+                                    <p class="invalid">{{msg}}</p>
+                                {%endif%}
+                            {%endfor%}
+                        {%endif%}
+                    {%endwith%}
+                    <br>
                     <input type="text" id="blank" required="required" placeholder="Email" class="two" name="email">
                     <input type="password" id="blank" required="required" placeholder="Password" class="three" name="password">
-                    <input type="text" id="blank" placeholder="First Name" class="four" name="firstname">
-                    <input type="text" id="blank" placeholder="Last Name" class="five" name="lastname">
-                    <input type="text" id="blank" placeholder="Company Name" class="five" name="companyname">
-
+                    <input type="text" id="blank" required="required" placeholder="First Name" class="four" name="firstname">
+                    <input type="text" id="blank" required="required" placeholder="Last Name" class="five" name="lastname">
+                    <input type="text" id="blank" required="required" placeholder="Company Name" class="five" name="companyname">
                     <input type="submit" value="Sign Up" id="btn" class="six" name="signup">
                 </form>
             </div>
@@ -51,5 +70,28 @@
     </div>
 </body>
 <script src="{{url_for('static', filename='js/login-signup.js')}}"></script>
-
+{% with messages = get_flashed_messages()%}
+    {%if messages%}
+        {%for msg in messages%}
+            {%if msg == "Email ID already in use" %}
+                <script>
+                    signUpbtn = document.querySelector('.signup');
+                    signUpbtn.click();
+                </script>
+            {%endif%}
+        {%endfor%}
+    {%endif%}
+{%endwith%}
+{% with messages = get_flashed_messages()%}
+    {%if messages%}
+        {%for msg in messages%}
+            {%if msg == "Wrong Password" or msg == "Invalid Email ID"%}
+                <script>
+                    signInbtn = document.querySelector('.signin');
+                    signInbtn.click();
+                </script>
+            {%endif%}
+        {%endfor%}
+    {%endif%}
+{%endwith%}
 </html>

@@ -29,13 +29,11 @@ const draw = () => {
     }
 };
 setInterval(draw, 40);
+
 button.onclick = function() {
-    if (document.getElementById('blank').value == document.getElementById('blankOne').value) {
-        text.classList.remove('show');
-        text.innerText = 'Password changed successfully';
-        text.classList.add('match')
-    }
-    else if (document.getElementById('blank').value != document.getElementById('blankOne').value) {
+    console.log(document.getElementById('blank').value)
+    console.log(document.getElementById('blankOne').value)
+    if (document.getElementById('blank').value != document.getElementById('blankOne').value) {
         text.classList.remove('match');
         text.innerText = 'Passwords do not match';
         text.classList.add('show');

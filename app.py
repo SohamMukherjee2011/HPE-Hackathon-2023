@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 import sqlstuff
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "ghwguiasghui0"
@@ -13,46 +13,71 @@ def homePage():
 def login_signup():
     if request.method == "POST":
         if "login" in request.form:
-            username=request.form['username']
+            email=request.form['email']
             password = request.form['password']
-            session['username'] = username
-            session['password'] = password
-            return redirect(url_for("account", username=username))
+            table = sqlstuff.showall('users')
+            for x in table:
+                if email == x[0]:
+                    if password == x[1]:
+                        session['email'] = email
+                        session['password'] = password
+                        return redirect(url_for("account", email = email))
+                        break
+                    else:
+                        flash('Wrong Password', 'info')
+                        return redirect(url_for('login_signup'))
+                else:
+                    flash('Invalid Email ID', 'info')
+                    return redirect(url_for("login_signup"))
         else :
-            username = request.form['username']
+            email = request.form['email']
             password = request.form['password']
             firstname = request.form['firstname']
             lastname = request.form['lastname']
-            email = request.form['email']
             companyname = request.form['companyname']
-            sqlstuff.signupInsert('users', username, password, firstname, lastname, email, companyname)
-            session["username"] = username
-            session["password"] = password
-            return redirect(url_for("account", username = username))
+            table = sqlstuff.showall('users')
+            for x in table:
+                if email == x[0]:
+                    flash("Email ID already in use", "info")
+                    return redirect(url_for("login_signup"))
+                    break
+            else:
+                    sqlstuff.signupInsert('users',email, password, firstname, lastname, companyname)
+                    session["email"] = email
+                    session["password"] = password
+                    return redirect(url_for("account", email = email))
     else:
-        if 'username' in session and 'password' in session:
-            username = session['username']
-            return redirect(url_for("account", username=username))
+        if 'email' in session and 'password' in session:
+            email = session['email']
+            return redirect(url_for("account", email = email))
         else:
             return render_template("login-signup.html")
 
 @app.route("/forgot-password", methods=["POST", "GET"])
 def forgotpassword():
-    if request.method == "GET":
+    if request.method == "POST":
+        email = request.form['email']
+        password = request.form['password']
+        sqlstuff.update('users', ['password'], [str(password)], 'email', str(email))
+        session["email"] = email
+        session["password"] = password
+        flash("password changed", "info")
+        return redirect(url_for("account", email = email))
+    else:
         return render_template("forgot_password.html")
 
 @app.route("/logout")
 def logout():
-    session.pop('username', None)
+    session.pop('email', None)
     session.pop('password', None)
     return redirect(url_for('login_signup'))
 
-@app.route("/account/<username>")
-def account(username):
-    if 'username' in session and 'password' in session:
-        username = str(username)
+@app.route("/account/<email>")
+def account(email):
+    if 'email' in session and 'password' in session:
+        email = str(email)
         password = str(session['password'])
-        return "<p>" + username + "</p><p>" + password + "</p>"
+        return render_template("account_temp.html", email = email, password = password)
     else:
         return redirect(url_for('login_signup'))
     
