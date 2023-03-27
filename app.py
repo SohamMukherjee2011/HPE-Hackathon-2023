@@ -16,7 +16,9 @@ def login_signup():
             email=request.form['email']
             password = request.form['password']
             table = sqlstuff.showall('users')
+            i = 0
             for x in table:
+                print(x[0])
                 if email == x[0]:
                     if password == x[1]:
                         session['email'] = email
@@ -27,8 +29,10 @@ def login_signup():
                         flash('Wrong Password', 'info')
                         return redirect(url_for('login_signup'))
                 else:
-                    flash('Invalid Email ID', 'info')
-                    return redirect(url_for("login_signup"))
+                    if i >= len(table):
+                        flash('Invalid Email ID', 'info')
+                        return redirect(url_for("login_signup"))
+                i += 1
         else :
             email = request.form['email']
             password = request.form['password']

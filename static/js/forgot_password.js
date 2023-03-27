@@ -34,12 +34,14 @@ button.onclick = function() {
     console.log(document.getElementById('blank').value)
     console.log(document.getElementById('blankOne').value)
     if (document.getElementById('blank').value != document.getElementById('blankOne').value) {
+        event.preventDefault()
         text.classList.remove('match');
         text.innerText = 'Passwords do not match';
         text.classList.add('show');
         document.getElementById('blankOne').value = "";
     }
     else if (document.getElementById('blank').value == "" && document.getElementById('blankOne').value == "") {
+        event.preventDefault()
         text.classList.remove('match');
         text.innerText = 'Please type your password';
         text.classList.add('show');
