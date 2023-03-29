@@ -24,21 +24,6 @@ def config():
         dblist.append(dbname)
     if 'main' in dblist:
         cursor.execute("USE main")
-        # cursor.execute("SHOW TABLES")
-        # global tablelist
-        # tablelist = []
-        # for x in cursor:
-        #     tablename = str(x)
-        #     #removing (,),' and , from the db name
-        #     tablename = tablename.replace('(','')
-        #     tablename = tablename.replace(')','')
-        #     tablename = tablename.replace("'",'')
-        #     tablename = tablename.replace(',','')
-        #     tablelist.append(dbname)
-        # print(tablelist)
-        # if 'users' not in tablelist:
-        #     cursor.execute("CREATE TABLE users(email VARCHAR(255) PRIMARY KEY, password VARCHAR(255), firstname VARCHAR(255), lastname VARCHAR(255), companyname VARCHAR(255));")
-        #     mydb.commit()
     else:
         cursor.execute("CREATE DATABASE main;")
         cursor.execute("USE main")
@@ -52,18 +37,26 @@ def showall(table):
     dblist = cursor.fetchall()
     return dblist
 
-def signupInsert(tablename, email, password, firstname, lastname, companyname):
-    sql = "INSERT INTO " + tablename + "(email, password, firstname, lastname, companyname)" + "VALUES (%s, %s, %s, %s, %s);"
-    val = (email, password, firstname, lastname, companyname)
+def showField(table, field, value):
+    global cursor
+    sql = "SELECT * FROM " + table + " WHERE " + field + "='" + value + "';"
+    print(sql)
+    cursor.execute(sql)
+    dblist = cursor.fetchall()
+    return dblist
+
+def deleteSingleRow(table, field, value):
+    cursor.execute("DELETE FROM " + table + " WHERE " + field + "='" + value + "';")
+    mydb.commit()
+
+def signupInsert(tablename, email, password, firstname, lastname, companyname, key):
+    sql = "INSERT INTO " + tablename + "(email, password, firstname, lastname, companyname, encryptionkey)" + "VALUES (%s, %s, %s, %s, %s, %s);"
+    val = (email, password, firstname, lastname, companyname, key)
     cursor.execute(sql, val)
     mydb.commit()
 
-def update(tablename, columnlist, valuelist, conditionfield, conditionvalue):
-    length = len(columnlist)
-    i = 0
-    while i < length:
-        sql = "UPDATE " + tablename + " SET " + columnlist[i] + "='" + str(valuelist[i]) + "' WHERE " + conditionfield + "='" + str(conditionvalue) + "';"
+def update(tablename, column, value, conditionfield, conditionvalue):
+        sql = "UPDATE " + tablename + " SET " + column + "=" + str(value) + " WHERE " + conditionfield + "='" + str(conditionvalue) + "';"
         print(sql)
         cursor.execute(sql)
         mydb.commit()
-        i += 1

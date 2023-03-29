@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 import sqlstuff
+import encryption
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "ghwguiasghui0"
 sqlstuff.config()
@@ -18,9 +19,10 @@ def login_signup():
             table = sqlstuff.showall('users')
             i = 0
             for x in table:
-                print(x[0])
                 if email == x[0]:
-                    if password == x[1]:
+                    passwordDec = encryption.decrypt(x[5], x[1])
+                    print(passwordDec)
+                    if password == str(passwordDec):
                         session['email'] = email
                         session['password'] = password
                         return redirect(url_for("account", email = email))
@@ -46,7 +48,8 @@ def login_signup():
                     return redirect(url_for("login_signup"))
                     break
             else:
-                    sqlstuff.signupInsert('users',email, password, firstname, lastname, companyname)
+                    passwordEnc = encryption.encrypt(password)
+                    sqlstuff.signupInsert('users',email, passwordEnc[1], firstname, lastname, companyname, passwordEnc[0])
                     session["email"] = email
                     session["password"] = password
                     return redirect(url_for("account", email = email))
@@ -62,7 +65,17 @@ def forgotpassword():
     if request.method == "POST":
         email = request.form['email']
         password = request.form['password']
-        sqlstuff.update('users', ['password'], [str(password)], 'email', str(email))
+        passwordEnc = encryption.encrypt(password)
+        accList = sqlstuff.showField('users', 'email', email)
+        print(accList)
+        for x in accList:
+            global firstname, lastname, companyname
+            firstname = x[2]
+            lastname = x[3]
+            companyname = x[4]
+        print(firstname, lastname, companyname)
+        sqlstuff.deleteSingleRow('users', 'email', email)
+        sqlstuff.signupInsert('users', email, passwordEnc[1], firstname, lastname, companyname, passwordEnc[0])
         session["email"] = email
         session["password"] = password
         flash("password changed", "info")
