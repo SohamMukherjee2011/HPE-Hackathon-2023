@@ -1,11 +1,5 @@
 import sqlstuff
 import encryption
 sqlstuff.config()
-password = input("Enter password: ")
-passwordEnc = encryption.encrypt(password)
-# sqlstuff.update('users', 'password', passwordEnc[1], 'email', 'iamsoham2011@gmail.com')
-# sqlstuff.update('users', 'encryptionkey', passwordEnc[0], 'email', 'iamsoham2011@gmail.com')
-
-
-if "0x674141414141426B4A496D566E54595169616773654C5A51687A517565425037306A36366B793079507839636A416C50385F4E72757247353646384830304F6C4266527A54485134684F5063735F317734584C616C564F75617252644368683050773D3D" == "0x674141414141426B4A456463776D434563744A5F426C4554487068664336583744676C614642636B5A6D6D7130503250396A585F7172525F6A6F6C556A616F58704E4D76525551565135663864795A7058707463396A4853625376546934615A4E773D3D":
-    print("True")
+sqlstuff.update('users', 'firstname', 'Rohan', 'email', 'iamsoham2011@gmail.com')
+print("update done")

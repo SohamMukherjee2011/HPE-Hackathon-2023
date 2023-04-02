@@ -24,10 +24,24 @@ def config():
         dblist.append(dbname)
     if 'main' in dblist:
         cursor.execute("USE main")
+        cursor.execute("SHOW TABLES")
+        tablelist = []
+        for x in cursor:
+            tablename = str(x)
+            tablename = tablename.replace('(', '')
+            tablename = tablename.replace(')', '')
+            tablename = tablename.replace(',', '')
+            tablename = tablename.replace("'", '')
+            tablelist.append(tablename)
+        if 'users' not in tablelist:
+            cursor.execute("CREATE TABLE users(email VARCHAR(255) PRIMARY KEY, password BLOB, firstname VARCHAR(255), lastname VARCHAR(255), companyname VARCHAR(255), encryptionkey BLOB);")
+            mydb.commit()
+
+
     else:
         cursor.execute("CREATE DATABASE main;")
         cursor.execute("USE main")
-        cursor.execute("CREATE TABLE users(email VARCHAR(255) PRIMARY KEY, password VARCHAR(255), firstname VARCHAR(255), lastname VARCHAR(255), companyname VARCHAR(255));")
+        cursor.execute("CREATE TABLE users(email VARCHAR(255) PRIMARY KEY, password BLOB, firstname VARCHAR(255), lastname VARCHAR(255), companyname VARCHAR(255), encryptionkey BLOB);")
         mydb.commit()
     print('config done')
 
@@ -56,7 +70,7 @@ def signupInsert(tablename, email, password, firstname, lastname, companyname, k
     mydb.commit()
 
 def update(tablename, column, value, conditionfield, conditionvalue):
-        sql = "UPDATE " + tablename + " SET " + column + "=" + str(value) + " WHERE " + conditionfield + "='" + str(conditionvalue) + "';"
+        sql = "UPDATE " + tablename + " SET " + column + "='" + str(value) + "' WHERE " + conditionfield + "='" + str(conditionvalue) + "';"
         print(sql)
         cursor.execute(sql)
         mydb.commit()

@@ -21,7 +21,6 @@ def login_signup():
             for x in table:
                 if email == x[0]:
                     passwordDec = encryption.decrypt(x[5], x[1])
-                    print(passwordDec)
                     if password == str(passwordDec):
                         session['email'] = email
                         session['password'] = password
@@ -30,11 +29,11 @@ def login_signup():
                     else:
                         flash('Wrong Password', 'info')
                         return redirect(url_for('login_signup'))
-                else:
+            else:
                     if i >= len(table):
                         flash('Invalid Email ID', 'info')
                         return redirect(url_for("login_signup"))
-                i += 1
+            i += 1
         else :
             email = request.form['email']
             password = request.form['password']
