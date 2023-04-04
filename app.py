@@ -91,9 +91,13 @@ def logout():
 @app.route("/account/<email>")
 def account(email):
     if 'email' in session and 'password' in session:
-        email = str(email)
-        password = str(session['password'])
-        return render_template("account_temp.html", email = email, password = password)
+        if email == session['email']:
+            email = str(email)
+            password = str(session['password'])
+            return render_template("account_temp.html", email = email, password = password)
+        else:
+            print("fofoffofofo")
+            return redirect(url_for('login_signup'))
     else:
         return redirect(url_for('login_signup'))
     
