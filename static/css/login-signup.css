@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700;800&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
+@import url('https://fonts.googleapis.com/css?family=Droid+Serif:400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700');
 
 * {
     font-family: 'Poppins', sans-serif;
@@ -7,6 +11,78 @@
     box-sizing: border-box;
     overflow: none;
     user-select: none;
+}
+
+section {
+    position: absolute;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    z-index: 2;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 110px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+header .a {
+    position: relative;
+    color: yellow;
+    font-family: 'Kaushan Script';
+    font-weight: 550;
+    font-size: 23px;
+    left: 1cm;
+    transition: 0.5s ease-in-out;
+    padding: 10px;
+    text-decoration: none;
+}
+header .a:hover {
+    color: #fec503;
+    cursor:pointer;
+}
+
+header ul {
+    position: relative;
+    display: flex;
+}
+
+header ul li {
+    list-style: none;
+}
+
+header ul li a {
+    display: block;
+    color: #C2C2C2;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 20px;
+    transition: 0.5s ease-in-out;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+header .hamburg {
+    display: block;
+    color: #C2C2C2;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 20px;
+    transition: 0.5s ease-in-out;
+    display: none;
+}
+
+header ul li a:hover {
+    color: #fec503;
 }
 
 body {
@@ -19,8 +95,9 @@ body {
 }
 
 canvas {
-    position: absolute;
+    position: fixed;
     filter: blur(3px);
+    z-index: 1;
 }
 
 #green {
@@ -38,7 +115,7 @@ canvas {
     width: 800px;
     height: 500px;
     margin: 20px;
-    
+    z-index: 3;
 }
 
 .loginbG {
@@ -289,11 +366,117 @@ canvas {
     transition-delay: 0.30s;
 }
 
+@media (max-width: 425px) {
+    header {
+        height: 70px;
+    }
+    .lists {
+        position: relative;
+        padding-right: 10000000px;
+    }
+}
+
+@media (max-width: 768px) {
+    * {
+        user-select: none;
+    }
+    header {
+        height: 70px;
+    }
+    header ul {
+        position: absolute;
+        top: 65px;
+        gap: 0;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        transition: 0.9s;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    header ul li {
+        bottom: 175px;
+        position: relative;
+        right: 1px;
+        width: 275px;
+        border-bottom: 1px solid rgb(114, 113, 113);
+        display: none;
+        justify-content: center;
+    }
+    header .hamburg {
+        display: inline-block;
+        font-size: 21px;
+    }
+    header .hamburg p {
+        display: block;
+        background-color: #FED136;
+        color: #fff;
+        padding: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-radius: 5px;
+        font-size: 14px;
+        transition: 0.5s ease-in-out;
+    }
+    header .hamburg.active p {
+        background: transparent;
+        border-radius: 5px;
+        border: 3px solid #FED136;
+        padding: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
+        position: relative;
+        z-index: 3;
+    }
+    header .list.active {
+        left: 0;
+        background: rgba(0, 0, 0, 0.981);
+        filter: opacity(2px);
+        backdrop-filter: blur(10px);
+        color: #fff;
+        width: 100%;  
+        position: absolute;
+        z-index: 2;
+    }
+
+    header .list.active > li {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .container {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+@media (max-width: 1024px) {
+    header {
+        padding: 20px;
+    }
+}
+
 @media (max-width: 991px) {
     * {
         user-select: none;
     }
+    section {
+        margin-bottom: 128px;
+    }
+    header {
+        backdrop-filter: blur(5px);
+        
+    }
+    header ul{
+        padding: 250px;
+        position: absolute;
+        z-index: 3;
+    }
     .container {
+        margin-top: 2cm;
         max-width: 400px;
         height: 650px;
         display: flex;
@@ -361,3 +544,4 @@ canvas {
         transition-delay: 0.25s;
     }
 }
+

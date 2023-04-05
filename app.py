@@ -27,13 +27,13 @@ def login_signup():
                         return redirect(url_for("account", email = email))
                         break
                     else:
+                        print('wrong pwd')
                         flash('Wrong Password', 'info')
                         return redirect(url_for('login_signup'))
-            else:
-                    if i >= len(table):
+                else:   
+                        print("invalid")     
                         flash('Invalid Email ID', 'info')
                         return redirect(url_for("login_signup"))
-            i += 1
         else :
             email = request.form['email']
             password = request.form['password']
@@ -96,7 +96,6 @@ def account(email):
             password = str(session['password'])
             return render_template("account_temp.html", email = email, password = password)
         else:
-            print("fofoffofofo")
             return redirect(url_for('login_signup'))
     else:
         return redirect(url_for('login_signup'))

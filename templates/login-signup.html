@@ -5,14 +5,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Login Page with a Matrix Rain made from scratch">
-    <meta description="Matrix Rain made from scratch">
+    <meta name="description" content="Login Page with++++ a Matrix Rain made from scratch">
     <link rel="stylesheet" href="{{url_for('static', filename='css/login-signup.css')}}">
     <script src="https://kit.fontawesome.com/a10bb03e8b.js" crossorigin="anonymous"></script>
     <title>Login</title>
 </head>
 
 <body>
+    <section>
+        <header>
+            <a href="/" class = 'a'>Hacked? Lol</a>
+            <div class="lists">
+                <ul class='list'>
+                    <li class="list2"><a href="/">Home</a></li>
+                    <li class="list2"><a href="/blogs">Blogs</a></li>
+                    <li class="list2"><a href="/quizzes">Quizzes</a></li>
+                    <li class="list2"><a href="/account">Account</a></li>
+                    <li class="list2"><a href="/home">Newsletter</a></li>
+                    <li class="list2"><a href="/login">Login</a></li>
+                </ul>
+            </div>
+            <div class="hamburg">
+                <p>Menu <i class="fa-solid fa-bars"></i></p>
+            </div>
+        </header>
+    </section>
     <canvas id="Matrix"></canvas>
     <div class="container">
         <div class="loginbG">
@@ -27,7 +44,7 @@
         </div>
         <div class="formbG" id="formbG">
             <div class="loginForm">
-                <form method = "post">
+                <form method = "post" name="login">
                     <h3>Login</h3>
                     {% with messages = get_flashed_messages()%}
                         {%if messages%}

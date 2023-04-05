@@ -29,11 +29,13 @@ const draw = () => {
     }
 };
 setInterval(draw, 40);
-
 button.onclick = function() {
-    console.log(document.getElementById('blank').value)
-    console.log(document.getElementById('blankOne').value)
-    if (document.getElementById('blank').value != document.getElementById('blankOne').value) {
+    if (document.getElementById('blank').value == document.getElementById('blankOne').value) {
+        text.classList.remove('show');
+        text.innerText = 'Password changed successfully';
+        text.classList.add('match')
+    }
+    else if (document.getElementById('blank').value != document.getElementById('blankOne').value) {
         event.preventDefault()
         text.classList.remove('match');
         text.innerText = 'Passwords do not match';
@@ -42,6 +44,7 @@ button.onclick = function() {
     }
     else if (document.getElementById('blank').value == "" && document.getElementById('blankOne').value == "") {
         event.preventDefault()
+
         text.classList.remove('match');
         text.innerText = 'Please type your password';
         text.classList.add('show');
