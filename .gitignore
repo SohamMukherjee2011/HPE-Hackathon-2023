@@ -1,4 +1,5 @@
 # Byte-compiled / optimized / DLL files
+sqltest.py
 __pycache__/
 *.py[cod]
 *$py.class
@@ -127,5 +128,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-sqltext.py

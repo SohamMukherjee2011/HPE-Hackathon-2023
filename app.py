@@ -88,17 +88,20 @@ def logout():
     session.pop('password', None)
     return redirect(url_for('login_signup'))
 
-@app.route("/account/<email>")
+@app.route("/account/<email>", methods=["GET", "POST"])
 def account(email):
-    if 'email' in session and 'password' in session:
-        if email == session['email']:
-            email = str(email)
-            password = str(session['password'])
-            return render_template("account_temp.html", email = email, password = password)
+    if request.method == "POST":
+        return redirect(url_for('account'))
+    else:
+        if 'email' in session and 'password' in session:
+            if email == session['email']:
+                email = str(email)
+                password = str(session['password'])
+                return render_template("account_temp.html", email = email, password = password)
+            else:
+                return redirect(url_for('login_signup'))
         else:
             return redirect(url_for('login_signup'))
-    else:
-        return redirect(url_for('login_signup'))
     
 @app.route('/account')
 def accredirect():
@@ -107,6 +110,19 @@ def accredirect():
     except:
         return redirect(url_for('login_signup'))
 
+#blogs part begins here
+@app.route('/blogs')
+def blogdashboard():
+    return render_template('bloglist.html')
+
+# quizzes part begins from here
+
+@app.route('/quizzes')
+def quizdashboard():
+    if 'email' in session and 'password' in session:
+        return("Quiz moment")
+    else:
+        return redirect(url_for('login_signup'))
 
 if __name__ == "__main__":
     app.run(Debug=True)
