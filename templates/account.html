@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Account Dashboard with hints of glassmorphism">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/account.css')}}">
+    <script src="https://kit.fontawesome.com/a10bb03e8b.js" crossorigin="anonymous"></script>
+    <title>Account Dashboard</title>
+</head>
+<body>
+    <section>
+        <header>
+            <span class="hecked">Hacked? Lol</span>
+            <div class="lists">
+                <ul class='list'>
+                    <li class="list2"><a href="/">Home</a></li>
+                    <li class="list2"><a href="#">Blogs</a></li>
+                    <li class="list2"><a href="#">Quizzes</a></li>
+                    <li class="list2"><a href="#">Account</a></li>
+                    <li class="list2"><a href="#">Newsletter</a></li>
+                </ul>
+            </div>
+            <div class="hamburg">
+                <p>Menu <i class="fa-solid fa-bars"></i></p>
+            </div>
+        </header>
+    </section>
+    <div class="container">
+        <ul class="dashboard">
+            <li class="dashnav"><a href="#"><i class="fa-solid fa-user"></i> Edit Profile</a></li>
+            <li class="dashnav" id="bigger"><a href="#"><i class="fa-solid fa-gauge"></i> Quiz Dashboard</a></li>
+            <li class="dashnav"><a href="/blogs"><i class="fa-solid fa-book"></i> Read More</a></li>
+        </ul>
+        <a class="logout" href = '/logout'>Logout</a>
+        <div class="line"></div>
+        <div class="form">
+            <div class="current">
+                <label class ="cname">Current Name: {{firstname}} {{lastname}}</label>
+                <label class ="cemail">Current Email: {{email}}</label>
+                <label class ="cusrname">Current Company Name: {{companyname}}</label>
+                <label class ="cpassword">Current Password: <span class="rick">{{password}}</span></label>
+            </div>
+            <form class="edit" method = 'post' name="changes">
+                <input type="text" placeholder="Change Firstname" class="name" name="firstname">
+                <input type="text" placeholder="Change Lastname" class="name" name="lastname">
+                <input type="text" placeholder="Change Companyname" class="username" name="companyname">
+                <input type = 'submit' class="submit" value ='Save Changes' style="width: 130px;
+                padding: 5px;
+                border-radius: 10px;
+                background: rgb(44, 204, 41);
+                outline: none;
+                border: none;
+                color: #fff;
+                position: relative;
+                top: 48px;
+                transition: 0.5s ease-in-out;
+                position: relative;
+                z-index: 3;">
+            </form>
+        </div>
+    </div>
+</body>
+<script src="{{url_for('static', filename='js/account.js')}}"></script>
+</html>

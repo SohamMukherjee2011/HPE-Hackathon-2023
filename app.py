@@ -24,14 +24,15 @@ def login_signup():
                     if password == str(passwordDec):
                         session['email'] = email
                         session['password'] = password
+                        session['firstname'] = x[2]
+                        session['lastname'] = x[3]
+                        session['companyname'] = x[4]
                         return redirect(url_for("account", email = email))
                         break
                     else:
-                        print('wrong pwd')
                         flash('Wrong Password', 'info')
                         return redirect(url_for('login_signup'))
                 else:   
-                        print("invalid")     
                         flash('Invalid Email ID', 'info')
                         return redirect(url_for("login_signup"))
         else :
@@ -66,17 +67,18 @@ def forgotpassword():
         password = request.form['password']
         passwordEnc = encryption.encrypt(password)
         accList = sqlstuff.showField('users', 'email', email)
-        print(accList)
         for x in accList:
             global firstname, lastname, companyname
             firstname = x[2]
             lastname = x[3]
             companyname = x[4]
-        print(firstname, lastname, companyname)
         sqlstuff.deleteSingleRow('users', 'email', email)
         sqlstuff.signupInsert('users', email, passwordEnc[1], firstname, lastname, companyname, passwordEnc[0])
         session["email"] = email
         session["password"] = password
+        session['firstname'] = x[2]
+        session['lastname'] = x[3]
+        session['companyname'] = x[4]
         flash("password changed", "info")
         return redirect(url_for("account", email = email))
     else:
@@ -91,13 +93,27 @@ def logout():
 @app.route("/account/<email>", methods=["GET", "POST"])
 def account(email):
     if request.method == "POST":
-        return redirect(url_for('account'))
+        newFname = request.form['firstname']
+        newLname = request.form['lastname']
+        newCompname = request.form['companyname']
+        sqlstuff.update('users', 'firstname', newFname, 'email', email)
+        sqlstuff.update('users', 'lastname', newLname, 'email', email)
+        sqlstuff.update('users', 'companyname', newCompname, 'email', email)
+        session['firstname'] = newFname
+        session['lastname'] = newLname
+        session['companyname'] = newCompname
+        return redirect(url_for('account', email = email))
+
     else:
         if 'email' in session and 'password' in session:
             if email == session['email']:
                 email = str(email)
                 password = str(session['password'])
-                return render_template("account_temp.html", email = email, password = password)
+                firstname=str(session['firstname'])
+                lastname=str(session['lastname'])
+                companyname=str(session['companyname'])
+                return render_template("account.html", email = email, password = password, 
+                                       firstname=firstname, lastname=lastname, companyname=companyname)
             else:
                 return redirect(url_for('login_signup'))
         else:
@@ -113,7 +129,17 @@ def accredirect():
 #blogs part begins here
 @app.route('/blogs')
 def blogdashboard():
-    return render_template('bloglist.html')
+    bloglist = sqlstuff.showall('bloglist')
+    blogList = []
+    for x in bloglist:
+        for y in x:
+            blogList.append(y)
+    i = 0
+    blogNumber = ""
+    while i < len(blogList): 
+        blogNumber = blogNumber + str(i)
+        i = i + 3
+    return render_template('bloglist.html', bloglist=blogList, blogNumber = str(blogNumber))
 
 # quizzes part begins from here
 

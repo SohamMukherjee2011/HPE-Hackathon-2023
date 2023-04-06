@@ -1,0 +1,305 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700;800&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
+@import url('https://fonts.googleapis.com/css?family=Droid+Serif:400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    user-select: none;
+    pointer-events: auto;
+}
+.submit{
+    width: 130px;
+    padding: 5px;
+    border-radius: 10px;
+    background: rgb(44, 204, 41);
+    outline: none;
+    border: none;
+    color: #fff;
+    position: relative;
+    top: 48px;
+    transition: 0.5s ease-in-out;
+    position: relative;
+    z-index: 3;
+}
+
+.submit:hover {
+    transition-delay: 0.2s;
+    color: rgb(44, 204, 41);
+    background: rgb(192, 250, 177);
+    cursor: pointer;
+}
+
+body {
+    background: url("/static/img/map-image.png");
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    z-index: 2;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 110px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+header span {
+    position: relative;
+    color: #fed136;
+    font-family: 'Kaushan Script';
+    font-weight: 550;
+    font-size: 23px;
+    left: 1cm;
+    transition: 0.5s ease-in-out;
+}
+
+header span:hover {
+    color: #fec503;
+}
+
+header ul {
+    position: relative;
+    display: flex;
+}
+
+header ul li {
+    list-style: none;
+}
+
+header ul li a {
+    display: block;
+    color: #C2C2C2;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 20px;
+    transition: 0.5s ease-in-out;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+header .hamburg {
+    display: block;
+    color: #C2C2C2;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 20px;
+    transition: 0.5s ease-in-out;
+    display: none;
+}
+
+header ul li a:hover {
+    color: #fec503;
+}
+input[type=submit]{
+    width: 130px;
+    padding: 5px;
+    border-radius: 10px;
+    background: rgb(44, 204, 41);
+    outline: none;
+    border: none;
+    color: #fff;
+    position: relative;
+    top: 48px;
+    transition: 0.5s ease-in-out;
+    position: relative;
+    z-index: 3;
+}
+
+input[type="submit"]:hover {
+    transition-delay: 0.2s;
+    color: rgb(44, 204, 41);
+    background: rgb(192, 250, 177);
+    cursor: pointer;
+}
+.container {
+    width: 1050px;
+    height: 600px;
+    position: absolute;
+    top: 115px;
+    left: 250px;
+    color: #fff;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.127);
+    z-index: 2;
+    pointer-events: auto;
+}
+
+.dashboard {
+    list-style: none;
+    position: absolute;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    padding: 50px;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.dashboard .dashnav {
+    color: rgb(155, 153, 153);
+    text-decoration: none;
+    position: relative;
+    z-index: 100;
+    transition: 0.5s ease-in-out;
+    border-radius: 10px;
+    
+}
+
+.dashboard .dashnav a {
+    color: rgb(155, 153, 153);
+    text-decoration: none;
+    position: relative;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 20px;
+}
+
+#bigger {
+    width: 200px;
+}
+
+.dashboard .dashnav:hover {
+    background: rgb(23, 23, 23);
+}
+
+.logout {
+    position: relative;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background: rgb(204, 41, 41);
+    color: #fff;
+    outline: none;
+    border: none;
+    text-align: center;
+    border-radius: 10px;
+    top: 490px;
+    left: 50px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+
+.logout:hover {
+    transition-delay: 0.2s;
+    color: rgb(204, 41, 41);
+    background-color: rgb(250, 177, 177);
+}
+
+
+.container .form {
+    width: 675px;
+    height: 525px;
+    position: absolute;
+    top: 30px;
+    left: 350px;
+}
+
+.form .edit {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-content: flex-end;
+    gap: 45px;
+    position: absolute;
+    top: 1px;
+}
+
+.form .edit input {
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 3px solid #333;
+    border-radius: 2px;
+    position: relative;
+    width: 300px;
+    padding: 10px;
+    color: #fff;
+    font-size: 16px;
+    left: 350px;
+}
+
+.form .edit input::placeholder {
+    color: rgb(154, 154, 154);
+    font-size: 16px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.form .current {
+    display: flex;
+    flex-direction: column;
+    color: rgb(154, 154, 154);
+    font-size: 17px;
+    gap: 80px;
+    padding: 10px;
+    position: relative;
+    right: 20px;
+}
+
+.form .current label {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 15px;
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+}
+
+.form .current .rick {
+    filter: blur(4px);
+    position: relative;
+    z-index: 4;
+    transition: 0.5s ease-in-out;
+}
+
+.form .current .rick.active {
+    transition-delay: 0.2s;
+    filter: blur(0px);
+}
+
+.form .current .cemail {
+    position: relative;
+    bottom: 10px;
+}
+
+.form .current .cusrname {
+    position: relative;
+    top: 80px;
+}
+
+.form .current .cpassword {
+    position: relative;
+    top: 70px;
+}
+
+
+.line {
+    background-color: rgb(20, 20, 20);
+    height: 500px;
+    width: 3px;
+    border-radius: 10px;
+    position: absolute;
+    left: 310px;
+    top: 30px;
+}

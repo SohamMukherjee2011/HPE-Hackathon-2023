@@ -8,7 +8,6 @@ mydb = mysql.connect(
 global cursor
 cursor = mydb.cursor()
 def config():
-
     #project-specific db checking if exists
     cursor.execute("SHOW DATABASES")
     global dblist
@@ -34,7 +33,9 @@ def config():
             tablename = tablename.replace("'", '')
             tablelist.append(tablename)
         if 'users' not in tablelist:
-            cursor.execute("CREATE TABLE users(email VARCHAR(255) PRIMARY KEY, password BLOB, firstname VARCHAR(255), lastname VARCHAR(255), companyname VARCHAR(255), encryptionkey BLOB);")
+            cursor.execute("CREATE TABLE users(email VARCHAR(255) UNIQUE, password BLOB, firstname VARCHAR(255), lastname VARCHAR(255), companyname VARCHAR(255), encryptionkey BLOB);")
+            cursor.execute("CREATE TABLE bloglist(title VARCHAR(255), description VARCHAR(255), link VARCHAR(255));")
+
             mydb.commit()
 
 
