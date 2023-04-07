@@ -12,14 +12,13 @@
 <body>
     <section>
         <header>
-            <span class="hecked">Hacked? Lol</span>
+            <a class="a" href="/">Hacked? Lol</a>
             <div class="lists">
                 <ul class='list'>
                     <li class="list2"><a href="/">Home</a></li>
-                    <li class="list2"><a href="#">Blogs</a></li>
-                    <li class="list2"><a href="#">Quizzes</a></li>
-                    <li class="list2"><a href="#">Account</a></li>
-                    <li class="list2"><a href="#">Newsletter</a></li>
+                    <li class="list2"><a href="/blogs">Blogs</a></li>
+                    <li class="list2"><a href="/quizzes">Quizzes</a></li>
+                    <li class="list2"><a href="/account">Account</a></li>
                 </ul>
             </div>
             <div class="hamburg">
@@ -27,6 +26,7 @@
             </div>
         </header>
     </section>
+    <canvas id="Matrix"></canvas>
     <div class="container">
         <ul class="dashboard">
             <li class="dashnav"><a href="#"><i class="fa-solid fa-user"></i> Edit Profile</a></li>
@@ -46,18 +46,7 @@
                 <input type="text" placeholder="Change Firstname" class="name" name="firstname">
                 <input type="text" placeholder="Change Lastname" class="name" name="lastname">
                 <input type="text" placeholder="Change Companyname" class="username" name="companyname">
-                <input type = 'submit' class="submit" value ='Save Changes' style="width: 130px;
-                padding: 5px;
-                border-radius: 10px;
-                background: rgb(44, 204, 41);
-                outline: none;
-                border: none;
-                color: #fff;
-                position: relative;
-                top: 48px;
-                transition: 0.5s ease-in-out;
-                position: relative;
-                z-index: 3;">
+                <input type = 'submit' id="submit" value ='Save Changes'>
             </form>
         </div>
     </div>

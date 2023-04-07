@@ -53,6 +53,7 @@
                     <li>
                         <a class="page-scroll" href="/blogs">Blogs</a>
                     </li>
+                    {% if login == True%}
                     <li>
                         <a class="page-scroll" href="/quizzes">Quizzes</a>
                     </li>
@@ -62,9 +63,13 @@
                     <li>
                         <a class="page-scroll" href="#newsletter">Newsletter</a>
                     </li>
+                    {%endif%}
+                    
+                    {%if login == False%}
                     <li>
                         <a class="page-scroll" href="/login-signup">Login</a>
                     </li>
+                    {%endif%}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

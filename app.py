@@ -8,7 +8,10 @@ sqlstuff.config()
 
 @app.route("/")
 def homePage():
-    return render_template("index.html")
+    if 'email' in session:
+        return render_template("index.html",login=True)
+    else:
+        return render_template("index.html",login=False)
 
 @app.route("/login-signup", methods=["POST", "GET"])
 def login_signup():
@@ -96,12 +99,16 @@ def account(email):
         newFname = request.form['firstname']
         newLname = request.form['lastname']
         newCompname = request.form['companyname']
-        sqlstuff.update('users', 'firstname', newFname, 'email', email)
-        sqlstuff.update('users', 'lastname', newLname, 'email', email)
-        sqlstuff.update('users', 'companyname', newCompname, 'email', email)
-        session['firstname'] = newFname
-        session['lastname'] = newLname
-        session['companyname'] = newCompname
+        if newFname != "":
+            sqlstuff.update('users', 'firstname', newFname, 'email', email)
+            session['firstname'] = newFname
+        if newLname != "":
+            sqlstuff.update('users', 'lastname', newLname, 'email', email)
+            session['lastname'] = newLname
+        if newCompname != "":        
+            sqlstuff.update('users', 'companyname', newCompname, 'email', email)
+
+            session['companyname'] = newCompname
         return redirect(url_for('account', email = email))
 
     else:

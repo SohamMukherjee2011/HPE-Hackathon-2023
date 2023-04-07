@@ -12,6 +12,17 @@
     overflow: none;
     user-select: none;
 }
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: 0.5s;    
+    background: url('/static/img/map-image.png');
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 section {
     position: absolute;
@@ -85,20 +96,8 @@ header ul li a:hover {
     color: #fec503;
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    transition: 0.5s;    
-    background-color: rgb(0, 0, 0);
-}
 
-canvas {
-    position: fixed;
-    filter: blur(3px);
-    z-index: 1;
-}
+
 
 #green {
     background: none;
