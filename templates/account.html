@@ -37,6 +37,13 @@
         <div class="line"></div>
         <div class="form">
             <div class="current">
+                {% with messages = get_flashed_messages()%}
+                {%if messages%}
+                    {%for msg in messages%}
+                            <label id="msg">{{msg}}</label>
+                    {%endfor%}
+                {%endif%}
+            {%endwith%}
                 <label class ="cname">Current Name: {{firstname}} {{lastname}}</label>
                 <label class ="cemail">Current Email: {{email}}</label>
                 <label class ="cusrname">Current Company Name: {{companyname}}</label>

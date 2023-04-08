@@ -9,9 +9,9 @@ sqlstuff.config()
 @app.route("/")
 def homePage():
     if 'email' in session:
-        return render_template("index.html",login=True)
+        return render_template("home.html",login=True)
     else:
-        return render_template("index.html",login=False)
+        return render_template("home.html",login=False)
 
 @app.route("/login-signup", methods=["POST", "GET"])
 def login_signup():
@@ -19,8 +19,7 @@ def login_signup():
         if "login" in request.form:
             email=request.form['email']
             password = request.form['password']
-            table = sqlstuff.showall('users')
-            i = 0
+            table = sqlstuff.showall('userlist')
             for x in table:
                 if email == x[0]:
                     passwordDec = encryption.decrypt(x[5], x[1])
@@ -31,20 +30,19 @@ def login_signup():
                         session['lastname'] = x[3]
                         session['companyname'] = x[4]
                         return redirect(url_for("account", email = email))
-                        break
                     else:
                         flash('Wrong Password', 'info')
                         return redirect(url_for('login_signup'))
-                else:   
-                        flash('Invalid Email ID', 'info')
-                        return redirect(url_for("login_signup"))
+            else:   
+                flash('Invalid Email ID', 'info')
+                return redirect(url_for("login_signup"))
         else :
             email = request.form['email']
             password = request.form['password']
             firstname = request.form['firstname']
             lastname = request.form['lastname']
             companyname = request.form['companyname']
-            table = sqlstuff.showall('users')
+            table = sqlstuff.showall('userlist')
             for x in table:
                 if email == x[0]:
                     flash("Email ID already in use", "info")
@@ -52,9 +50,12 @@ def login_signup():
                     break
             else:
                     passwordEnc = encryption.encrypt(password)
-                    sqlstuff.signupInsert('users',email, passwordEnc[1], firstname, lastname, companyname, passwordEnc[0])
+                    sqlstuff.signupInsert('userlist',email, passwordEnc[1], firstname, lastname, companyname, passwordEnc[0])
                     session["email"] = email
                     session["password"] = password
+                    session["firstname"] = firstname
+                    session["lastname"] = lastname
+                    session["companyname"] = companyname
                     return redirect(url_for("account", email = email))
     else:
         if 'email' in session and 'password' in session:
@@ -69,14 +70,14 @@ def forgotpassword():
         email = request.form['email']
         password = request.form['password']
         passwordEnc = encryption.encrypt(password)
-        accList = sqlstuff.showField('users', 'email', email)
+        accList = sqlstuff.showField('userlist', 'email', email)
         for x in accList:
             global firstname, lastname, companyname
             firstname = x[2]
             lastname = x[3]
             companyname = x[4]
-        sqlstuff.deleteSingleRow('users', 'email', email)
-        sqlstuff.signupInsert('users', email, passwordEnc[1], firstname, lastname, companyname, passwordEnc[0])
+        sqlstuff.deleteSingleRow('userlist', 'email', email)
+        sqlstuff.signupInsert('userlist', email, passwordEnc[1], firstname, lastname, companyname, passwordEnc[0])
         session["email"] = email
         session["password"] = password
         session['firstname'] = x[2]
@@ -100,15 +101,15 @@ def account(email):
         newLname = request.form['lastname']
         newCompname = request.form['companyname']
         if newFname != "":
-            sqlstuff.update('users', 'firstname', newFname, 'email', email)
+            sqlstuff.update('userlist', 'firstname', newFname, 'email', email)
             session['firstname'] = newFname
         if newLname != "":
-            sqlstuff.update('users', 'lastname', newLname, 'email', email)
+            sqlstuff.update('userlist', 'lastname', newLname, 'email', email)
             session['lastname'] = newLname
         if newCompname != "":        
-            sqlstuff.update('users', 'companyname', newCompname, 'email', email)
-
+            sqlstuff.update('userlist', 'companyname', newCompname, 'email', email)
             session['companyname'] = newCompname
+        flash("Changes saved successfully", 'info')
         return redirect(url_for('account', email = email))
 
     else:

@@ -21,8 +21,8 @@ def config():
         dbname = dbname.replace(',', '')
         dbname = dbname.replace("'", '')
         dblist.append(dbname)
-    if 'main' in dblist:
-        cursor.execute("USE main")
+    if 'hackathon' in dblist:
+        cursor.execute("USE hackathon;")
         cursor.execute("SHOW TABLES")
         tablelist = []
         for x in cursor:
@@ -32,18 +32,74 @@ def config():
             tablename = tablename.replace(',', '')
             tablename = tablename.replace("'", '')
             tablelist.append(tablename)
-        if 'users' not in tablelist:
-            cursor.execute("CREATE TABLE users(email VARCHAR(255) UNIQUE, password BLOB, firstname VARCHAR(255), lastname VARCHAR(255), companyname VARCHAR(255), encryptionkey BLOB);")
-            cursor.execute("CREATE TABLE bloglist(title VARCHAR(255), description VARCHAR(255), link VARCHAR(255));")
-
-            mydb.commit()
-
-
+        if 'userlist' not in tablelist:
+            cursor.execute("""CREATE TABLE userlist(
+                            email VARCHAR(255),
+                            password BLOB,
+                            firstname VARCHAR(255),
+                            lastname VARCHAR(255),
+                            companyname VARCHAR(255),
+                            encryptionkey BLOB);""")
+        if 'quizresult' not in tablelist:
+            cursor.execute("""CREATE TABLE quizresult(
+                            email VARCHAR(255),
+                            quizname VARCHAR(255),
+                            score INT,
+                            result INT);""")
+        if 'bloglist' not in tablelist:
+            cursor.execute("""CREATE TABLE bloglist(
+                           title VARCHAR(255) ,
+                           description VARCHAR(255),
+                           link VARCHAR(255));""")
+        if 'blogs' not in tablelist:
+            cursor.execute("""CREATE TABLE blogs(
+                            title VARCHAR(255),
+                            content VARCHAR(255),
+                            type VARCHAR(255),
+                            indexno INT);""")
+        if 'quizlist' not in tablelist:
+            cursor.execute("""CREATE TABLE quizlist(
+                            title VARCHAR(255),
+                            link VARCHAR(255));""")
+        if 'quizzes' not in tablelist:
+            cursor.execute("""CREATE TABLE quizzes(
+                            title VARCHAR(255),
+                            description VARCHAR(255), 
+                            link VARCHAR(255));""")
+            
     else:
-        cursor.execute("CREATE DATABASE main;")
-        cursor.execute("USE main")
-        cursor.execute("CREATE TABLE users(email VARCHAR(255) PRIMARY KEY, password BLOB, firstname VARCHAR(255), lastname VARCHAR(255), companyname VARCHAR(255), encryptionkey BLOB);")
-        mydb.commit()
+        cursor.execute("CREATE DATABASE hackathon;")
+        cursor.execute("USE hackathon")
+        cursor.execute("""CREATE TABLE userlist(
+                            email VARCHAR(255),
+                            password BLOB,
+                            firstname VARCHAR(255),
+                            lastname VARCHAR(255),
+                            companyname VARCHAR(255),
+                            encryptionkey BLOB);""")
+        cursor.execute("""CREATE TABLE quizresult(
+                            email VARCHAR(255),
+                            quizname VARCHAR(255),
+                            score INT,
+                            result INT);""")
+        cursor.execute("""CREATE TABLE bloglist(
+                           title VARCHAR(255),
+                           description VARCHAR(255),
+                           link VARCHAR(255));""")
+        cursor.execute("""CREATE TABLE blogs(
+                            title VARCHAR(255),
+                            content VARCHAR(255),
+                            type VARCHAR(255),
+                            index INT);""")
+        cursor.execute("""CREATE TABLE quizlist(
+                            title VARCHAR(255),
+                            link VARCHAR(255));""")
+        cursor.execute("""CREATE TABLE quizzes(
+                            title VARCHAR(255),
+                            description VARCHAR(255), 
+                            link VARCHAR(255));""")
+
+    mydb.commit()
     print('config done')
 
 def showall(table):

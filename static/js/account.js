@@ -30,9 +30,21 @@ setInterval(draw, 40);
 const rick = document.querySelector('.rick');
 const active = document.querySelector('label')
 const submit = document.getElementsByClassName('submit');
+const message = document.getElementById('msg');
 rick.onclick = function () {
     rick.classList.add('active');
 }
 submit.onclick = function () {
     document.forms["changes"].submit();
 }
+setTimeout(function() {
+    message.classList.add('visuallyhidden');    
+    message.addEventListener('transitionend', function() {
+      message.style.display = 'none';
+    },
+    {
+        capture: false,
+        once: true,
+        passive: false
+      });
+}, 1000);
