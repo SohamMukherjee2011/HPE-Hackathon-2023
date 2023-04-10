@@ -151,10 +151,10 @@ def blogdashboard():
 
 # quizzes part begins from here
 
-@app.route('/quizzes')
+@app.route('/quizdashboard')
 def quizdashboard():
     if 'email' in session and 'password' in session:
-        return("Quiz moment")
+        return(render_template('quizdashboard.html'))
     else:
         return redirect(url_for('login_signup'))
 

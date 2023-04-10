@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Account Dashboard with hints of glassmorphism">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/quizdashboard.css')}}">
+    <script src="https://kit.fontawesome.com/a10bb03e8b.js" crossorigin="anonymous"></script>
+    <title>Quiz Dashboard</title>
+</head>
+
+<body>
+    <section>
+        <header>
+            <a class="a" href="/">Hacked? Lol</a>
+            <div class="lists">
+                <ul class='list'>
+                    <li class="list2"><a href="/">Home</a></li>
+                    <li class="list2"><a href="/blogs">Blogs</a></li>
+                    <li class="list2"><a href="/quizdashboard">Quizzes</a></li>
+                    <li class="list2"><a href="/account">Account</a></li>
+                </ul>
+            </div>
+            <div class="hamburg">
+                <p>Menu <i class="fa-solid fa-bars"></i></p>
+            </div>
+        </header>
+    </section>
+    <div class="container">
+        <ul class="dashboard">
+            <li class="dashnav"><a href="index.html"><i class="fa-solid fa-user"></i> Edit Profile</a></li>
+            <li class="dashnav" id="bigger"><a href="/account"><i class="fa-solid fa-gauge"></i> Account Dashboard</a>
+            </li>
+            <li class="dashnav"><a href="#"><i class="fa-solid fa-book"></i> Read More</a></li>
+        </ul>
+        <button class="logout">Logout</button>
+        <div class="line"></div>
+        <div class="form">
+            <label class="performance">Your Average Quiz Performance is: <span class="color">69%</span></label>
+            <span class="past">Your Past Quiz Results: <span />
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><div class="quiz1"><div class="text1">Quiz 1</div></div></td>
+                            <td><div class="quiz2"><div class="text2">Quiz 2</div></div></td>
+                            <td><div class="quiz3"><div class="text3">Quiz 3</div></div></td>
+                            <td><div class="quiz1"><div class="text1">Quiz 4</div></div></td>
+                            <td><div class="quiz2"><div class="text2">Quiz 5</div></div></td>
+                            <td><div class="quiz3"><div class="text3">Quiz 6</div></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</body>
+<script src="{{url_for('static', filename='js/quizdashboard.js')}}"></script>
+
+</html>
