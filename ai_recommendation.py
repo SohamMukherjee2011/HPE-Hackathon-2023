@@ -23,8 +23,7 @@ import yake
 porter = PorterStemmer()
 
 def extracto(text):
-    text = "Cyber security refers to the practice of protecting computer systems, networks, and data from unauthorized access, theft, damage, or other types of cyber attacks. Cyber attacks can take many forms, including phishing, malware, ransomware, denial-of-service attacks, and hacking."
-    extractor=yake.KeywordExtractor(top=10, stopwords=None, n = 2)
+    extractor=yake.KeywordExtractor(top=5, stopwords=None, n = 2)
     keywords = extractor.extract_keywords(text)
     keyword = []
     score = []
@@ -37,3 +36,5 @@ def extracto(text):
                 break
         keyword.append(porter.stem(x))
     return keyword
+text1 = extracto("Cyber security refers to the practice of protecting computer systems, networks, and data from unauthorized access, theft, damage, or other types of cyber attacks. Cyber attacks can take many forms, including phishing, malware, ransomware, denial-of-service attacks, and hacking.")
+print(text1)

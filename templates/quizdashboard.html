@@ -44,19 +44,19 @@
                 <table>
                     <tbody>
                         <tr>
-                            {%set i = 1%}
-                            {%set top = 0%}
                             {% for x, y, z in quizlist%}
                             <td>
-                                {%if z % 3 == 0%}
-                                    {%set i = 1%}
-                                    {%set top = top + 30%}
-                                {%endif%}
-                                <div class="quiz{{i}}">
+                                <div class="parent">
+                                <div class="quiz1">
                                     <div class="text1">{{x}}</div>
-                                    <div>{{y}}</div>
+                                    {%if z == True %}
+                                        <p class="score">{{y}}</p>
+                                    {%else%}
+                                        <p class = "attempt">unattempted</p>
+                                    {%endif%}
+                                    </div>
                                 </div>
-                                {% set i = i + 1%}
+
                             </td>
 
                             {%endfor%}

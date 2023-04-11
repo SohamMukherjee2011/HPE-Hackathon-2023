@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/quiz_template.css')}}">
+    <title>Quiz Page</title>
+</head>
+<body>
+    <!-- Top Section  -->
+    <div class="intro py-3 bg-white text-center">
+        <div class="container">
+            <h2 class="text-primary display-3 my-4">Quiz Time</h2>
+        </div>
+    </div>
+    <!-- Result section  -->
+    <div class="result py-4 d-none bg-light text-center">
+        <div class="container lead">
+            <p>Your Score is <span class="text-primary display-4 p-3">0%</span></p-3></p>
+        </div>
+    </div>
+    <!-- Quiz Section  -->
+    <div class="quiz py-4 bg-primary">
+        <div class="container">  
+            <h2 class="my-5 text-white">
+                    <!-- hoizontal blog -->
+        <div class="container" id = 'articles'>
+            <div class="card shadow mb-5 mt-5">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
+                            <h4>     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum nisi porro itaque atque impedit amet obcaecati praesentium vel fugiat, eos veritatis labore, blanditiis aut a hic perferendis harum odit excepturi?</h4>
+                            <button class="btn btn-primary">Read more</button>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="https://placehold.it/350x250" class="img-fluid" alt="bootcatch carousel blog">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow mb-5">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                             <img src="https://placehold.it/350x250" class="img-fluid" alt="bootcatch carousel blog">
+                        </div>
+                        <div class="col-md-8">
+                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h3>
+                            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum nisi porro itaque atque impedit amet obcaecati praesentium vel fugiat, eos veritatis labore, blanditiis aut a hic perferendis harum odit excepturi?</h4>
+                            <button class="btn btn-primary">Read more</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                            
+            </h2>
+            <form class="quiz-form text-light">
+                {%for title, question, options, correctoption, questionnumber  in quizdata %}
+                <div class="my-5">
+                    <p class="lead font-weight-normal">{{questionnumber}}. {{question}}</p>
+                    <div class="form-check my-2 text-white-50">
+                        <input type="radio" name="q1" value="A" checked>
+                        <label class="form-check-label">ur mom</label>
+                    </div>
+                    <div class="form-check my-2 text-white-50">
+                        <input type="radio" name="q1" value="B" >
+                        <label class="form-check-label">Soham</label>
+                    </div>
+                    <div class="form-check my-2 text-white-50">
+                        <input type="radio" name="q1" value="C" >
+                        <label class="form-check-label">someone</label>
+                    </div>
+                    <div class="form-check my-2 text-white-50">
+                        <input type="radio" name="q1" value="D" >
+                        <label class="form-check-label">somebody</label>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <input type="submit" class="btn btn-light">
+                </div>
+                {%endfor%}
+            </form>
+            
+        </div>
+    </div>
+    <script src="{{url_for('static', filename='/js/quiz_template.js')}}"></script>
+</body>
+</html>

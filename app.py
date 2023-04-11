@@ -152,6 +152,13 @@ def blogdashboard():
         i = i + 3
     return render_template('bloglist.html', bloglist=blogList, blogNumber = str(blogNumber))
 
+@app.route('/blogs/stop-getting-hacked')
+def stop():
+    return render_template('stop getting hacked.html')
+
+@app.route('/blogs/cyber-security-101')
+def security():
+    return render_template('cybersecurity.html')
 # quizzes part begins from here
 
 @app.route('/quizdashboard')
@@ -163,10 +170,17 @@ def quizdashboard():
         i = 0
         for valuelist in rowlist:
             i = i + 1
-            quizlist.append((valuelist[1], valuelist[2], i))
+            print(valuelist[4])
+            quizlist.append((valuelist[1], valuelist[2], bool(valuelist[4])))
         return(render_template('quizdashboard.html', quizlist=quizlist))
     else:
         return redirect(url_for('login_signup'))
+
+@app.route('/quizzes/<quizname>')
+def quiz(quizname):
+    quizdata = sqlstuff.showField('quizzes', 'title', quizname)
+    print(quizdata)
+    return render_template('quiz_template.html', quizdata=quizdata)
 
 if __name__ == "__main__":
     app.run(Debug=True)
