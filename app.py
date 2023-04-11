@@ -171,16 +171,53 @@ def quizdashboard():
         for valuelist in rowlist:
             i = i + 1
             print(valuelist[4])
-            quizlist.append((valuelist[1], valuelist[2], bool(valuelist[4])))
+            quizlist.append((valuelist[1], valuelist[2], bool(valuelist[4]), i, valuelist[5]))
         return(render_template('quizdashboard.html', quizlist=quizlist))
     else:
         return redirect(url_for('login_signup'))
 
-@app.route('/quizzes/<quizname>')
+@app.route('/quizzes/<quizname>', methods = ["GET", "POST"])
 def quiz(quizname):
-    quizdata = sqlstuff.showField('quizzes', 'title', quizname)
-    print(quizdata)
-    return render_template('quiz_template.html', quizdata=quizdata)
+    quizdata = sqlstuff.showField('quizzes', 'link','/quizzes/' + quizname)
+    if request.method == "GET":
+            if quizdata == []:
+                return redirect(url_for('login_signup'))
+            else: 
+                return render_template('quiz_template.html', quizdata = quizdata)
+    else:
+        result = []
+        score = 0
+        for y in quizdata:
+            #form-data collection
+            global quizname1
+            quizname1 = y[0]
+            useroption = request.form[y[1]]
+            i = 0
+            optionstemp = str(y[4])
+            optionstemp = list(optionstemp.split(","))
+            options = []
+            optiondict = {}
+            for x in optionstemp:
+                x = x.replace("'", '')
+                x = x.replace('[', '')
+                x = x.replace(']', '')
+                options.append(x.strip())
+            optiondict['A'] = options[0]
+            optiondict['B'] = options[1]
+            optiondict['C'] = options[2]
+            optiondict['D'] = options[3]
+            if optiondict[useroption] == y[2]:
+                score = score + 1
+                print(score)
+                result.append(1)
+                print(result)
+            else:
+                result.append(0)
+        score = int(score*25)
+        sqlstuff.quizresultinsert('quizresult', session['email'], y[0], score, str(result), True, '/quizzes/' +  quizname)
+        return render_template('quiz_result.html', score=score)
+            
+
 
 if __name__ == "__main__":
-    app.run(Debug=True)
+    app.run(Debug=True) 

@@ -12,7 +12,7 @@
 <body>
     <section>
         <header>
-            <a class="a" href="/">Hacked? Lol</a>
+            <a class="a" href="/">Cyber Security</a>
             <div class="lists">
                 <ul class='list'>
                     <li class="list2"><a href="/">Home</a></li>
@@ -47,12 +47,11 @@
                 <label class ="cname">Current Name: {{firstname}} {{lastname}}</label>
                 <label class ="cemail">Current Email: {{email}}</label>
                 <label class ="cusrname">Current Company Name: {{companyname}}</label>
-                <label class ="cpassword">Current Password: <span class="rick">{{password}}</span></label>
             </div>
             <form class="edit" method = 'post' name="changes">
-                <input type="text" placeholder="Change Firstname" class="name" name="firstname">
-                <input type="text" placeholder="Change Lastname" class="name" name="lastname">
-                <input type="text" placeholder="Change Companyname" class="username" name="companyname">
+                <input type="text" placeholder="Change Firstname" class="name" name="firstname" autocomplete="off">
+                <input type="text" placeholder="Change Lastname" class="name" name="lastname" autocomplete="off">
+                <input type="text" placeholder="Change Companyname" class="username" name="companyname" autocomplete="off">
                 <input type = 'submit' id="submit" value ='Save Changes'>
             </form>
         </div>

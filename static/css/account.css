@@ -51,6 +51,7 @@ canvas {
     filter: blur(3px);
     z-index: 1;
     -webkit-filter: blur(3px);
+    overflow-x: hidden;
 }
 section {
     position: relative;

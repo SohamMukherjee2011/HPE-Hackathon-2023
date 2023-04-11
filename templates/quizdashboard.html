@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Account Dashboard with hints of glassmorphism">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/quizdashboard.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='/css/quizdashboard.css')}}">
     <script src="https://kit.fontawesome.com/a10bb03e8b.js" crossorigin="anonymous"></script>
     <title>Quiz Dashboard</title>
 </head>
@@ -14,7 +14,7 @@
 <body>
     <section>
         <header>
-            <a class="a" href="/">Hacked? Lol</a>
+            <a class="a" href="/">Cyber Security</a>
             <div class="lists">
                 <ul class='list'>
                     <li class="list2"><a href="/">Home</a></li>
@@ -40,32 +40,30 @@
         <div class="line"></div>
         <div class="form">
             <label class="performance">Your Average Quiz Performance is: <span class="color">69%</span></label>
-            <span class="past">Your Past Quiz Results: <span />
+            <span class="past">Your Past Quiz Results: <span/>
                 <table>
                     <tbody>
                         <tr>
-                            {% for x, y, z in quizlist%}
                             <td>
-                                <div class="parent">
+                                {%for title, score, attempted, number, link in quizlist%}
                                 <div class="quiz1">
-                                    <div class="text1">{{x}}</div>
-                                    {%if z == True %}
-                                        <p class="score">{{y}}</p>
+                                    <p class="text1">{{title}}</p>
+                                    {%if attempted == 1%}
+                                    <p class="score">score: {{score}}%</p>
+                                    <a href="{{link}}" class="reattempt"><i class="fa-solid fa-rotate-right" id="center"></i></a>
                                     {%else%}
-                                        <p class = "attempt">unattempted</p>
+                                    <p class="attempt">unattempted</p>
+                                    <a href="{{link}}" class="attempted"><i class="fa-solid fa-rotate-right" id="center"></i></a>
                                     {%endif%}
-                                    </div>
                                 </div>
-
+                                {%endfor%}
                             </td>
-
-                            {%endfor%}
                         </tr>
                     </tbody>
                 </table>
         </div>
     </div>
 </body>
-<script src="{{url_for('static', filename='js/quizdashboard.js')}}"></script>
+<script src="{{url_for('static', filename='/js/quizdashboard.js')}}"></script>
 
 </html>

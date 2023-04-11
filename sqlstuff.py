@@ -125,6 +125,12 @@ def signupInsert(tablename, email, password, firstname, lastname, companyname, k
     cursor.execute(sql, val)
     mydb.commit()
 
+def quizresultinsert(tablename, email, quizname, score, result, attempted, link):
+    sql = "INSERT INTO " + tablename + "(email, quizname, score, result, attempted, link)  VALUES(%s, %s, %s, %s, %s, %s);"
+    val = (email, quizname, score, result, attempted,link)
+    cursor.execute(sql, val)
+    mydb.commit()
+
 def update(tablename, column, value, conditionfield, conditionvalue):
         sql = "UPDATE " + tablename + " SET " + column + "='" + str(value) + "' WHERE " + conditionfield + "='" + str(conditionvalue) + "';"
         cursor.execute(sql)

@@ -1,5 +1,7 @@
-import sqlstuff
-import encryption
-sqlstuff.config()
-sqlstuff.update('users', 'firstname', 'Rohan', 'email', 'iamsoham2011@gmail.com')
-print("update done")
+list1 = "['list', 'set', 'tuple']"
+list2 = list(list1.split(","))
+for x in list2:
+    x = x.replace("'", '')
+    x = x.replace('[', '')
+    x = x.replace(']', '')
+    
