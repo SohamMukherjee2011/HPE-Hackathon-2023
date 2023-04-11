@@ -111,10 +111,9 @@ def showall(table):
 def showField(table, field, value):
     global cursor
     sql = "SELECT * FROM " + table + " WHERE " + field + "='" + value + "';"
-    print(sql)
     cursor.execute(sql)
-    dblist = cursor.fetchall()
-    return dblist
+    valuelist = cursor.fetchall()
+    return valuelist
 
 def deleteSingleRow(table, field, value):
     cursor.execute("DELETE FROM " + table + " WHERE " + field + "='" + value + "';")
@@ -128,6 +127,5 @@ def signupInsert(tablename, email, password, firstname, lastname, companyname, k
 
 def update(tablename, column, value, conditionfield, conditionvalue):
         sql = "UPDATE " + tablename + " SET " + column + "='" + str(value) + "' WHERE " + conditionfield + "='" + str(conditionvalue) + "';"
-        print(sql)
         cursor.execute(sql)
         mydb.commit()

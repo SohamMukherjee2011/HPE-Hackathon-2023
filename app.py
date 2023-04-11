@@ -92,6 +92,9 @@ def forgotpassword():
 def logout():
     session.pop('email', None)
     session.pop('password', None)
+    session.pop('firstname', None)
+    session.pop('lastname', None)
+    session.pop('companyname', None)
     return redirect(url_for('login_signup'))
 
 @app.route("/account/<email>", methods=["GET", "POST"])
@@ -154,7 +157,14 @@ def blogdashboard():
 @app.route('/quizdashboard')
 def quizdashboard():
     if 'email' in session and 'password' in session:
-        return(render_template('quizdashboard.html'))
+        email = session['email']
+        rowlist = sqlstuff.showField('quizresult', 'email', email)
+        quizlist = []
+        i = 0
+        for valuelist in rowlist:
+            i = i + 1
+            quizlist.append((valuelist[1], valuelist[2], i))
+        return(render_template('quizdashboard.html', quizlist=quizlist))
     else:
         return redirect(url_for('login_signup'))
 
