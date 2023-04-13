@@ -36,10 +36,10 @@
             </li>
             <li class="dashnav"><a href="#"><i class="fa-solid fa-book"></i> Read More</a></li>
         </ul>
-        <button class="logout">Logout</button>
+        <a class="logout" href="/logout">Logout</a>
         <div class="line"></div>
         <div class="form">
-            <label class="performance">Your Average Quiz Performance is: <span class="color">69%</span></label>
+            <label class="performance">Your Average Quiz Performance is: <span class="color">{{averageScore}}% </span></label>
             <span class="past">Your Past Quiz Results: <span/>
                 <table>
                     <tbody>
@@ -53,7 +53,7 @@
                                     <a href="{{link}}" class="reattempt"><i class="fa-solid fa-rotate-right" id="center"></i></a>
                                     {%else%}
                                     <p class="attempt">unattempted</p>
-                                    <a href="{{link}}" class="attempted"><i class="fa-solid fa-rotate-right" id="center"></i></a>
+                                    <a href="{{link}}" class="unattempted">Attempt Now</a>
                                     {%endif%}
                                 </div>
                                 {%endfor%}

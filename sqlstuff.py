@@ -1,5 +1,8 @@
-import mysql.connector as mysql
+# SQL funtions file for backend
 
+
+import mysql.connector as mysql
+# the data can be changed as required
 mydb = mysql.connect(
         host="localhost",
         user="root",
@@ -22,6 +25,8 @@ def config():
         dbname = dbname.replace("'", '')
         dblist.append(dbname)
     if 'hackathon' in dblist:
+        # checks if hackathon db contains all the tables
+        # coded for a safeguard
         cursor.execute("USE hackathon;")
         cursor.execute("SHOW TABLES")
         tablelist = []
@@ -66,7 +71,7 @@ def config():
                             title VARCHAR(255),
                             description VARCHAR(255), 
                             link VARCHAR(255));""")
-            
+    # creates the database along with the tables   
     else:
         cursor.execute("CREATE DATABASE hackathon;")
         cursor.execute("USE hackathon")
@@ -101,36 +106,36 @@ def config():
 
     mydb.commit()
     print('config done')
-
+# basically SELECT COMMAND
 def showall(table):
     global cursor
     cursor.execute("SELECT * FROM " + table)
     dblist = cursor.fetchall()
     return dblist
-
+# SELECT WHERE command
 def showField(table, field, value):
     global cursor
     sql = "SELECT * FROM " + table + " WHERE " + field + "='" + value + "';"
     cursor.execute(sql)
     valuelist = cursor.fetchall()
     return valuelist
-
+# DELETE WHERE command
 def deleteSingleRow(table, field, value):
     cursor.execute("DELETE FROM " + table + " WHERE " + field + "='" + value + "';")
     mydb.commit()
-
+# INSERT (for signup)
 def signupInsert(tablename, email, password, firstname, lastname, companyname, key):
     sql = "INSERT INTO " + tablename + "(email, password, firstname, lastname, companyname, encryptionkey)" + "VALUES (%s, %s, %s, %s, %s, %s);"
     val = (email, password, firstname, lastname, companyname, key)
     cursor.execute(sql, val)
     mydb.commit()
-
+# INSERT (for quiz results)
 def quizresultinsert(tablename, email, quizname, score, result, attempted, link):
     sql = "INSERT INTO " + tablename + "(email, quizname, score, result, attempted, link)  VALUES(%s, %s, %s, %s, %s, %s);"
     val = (email, quizname, score, result, attempted,link)
     cursor.execute(sql, val)
     mydb.commit()
-
+# UPDATE (for account dashboard)
 def update(tablename, column, value, conditionfield, conditionvalue):
         sql = "UPDATE " + tablename + " SET " + column + "='" + str(value) + "' WHERE " + conditionfield + "='" + str(conditionvalue) + "';"
         cursor.execute(sql)

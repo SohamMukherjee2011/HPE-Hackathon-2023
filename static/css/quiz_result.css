@@ -39,7 +39,7 @@ body {
 h1,h2,h3,h4,h5,h6{
     font-family: 'Bree Serif', serif;
 }
-@import url(https://fonts.googleapis.com/css?family=Poppins);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Poppins);
 body {
   font-family: "Poppins", sans-serif !important;
 }
@@ -48,6 +48,33 @@ html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.home {
+  position: relative;
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  transition: 0.5s ease-in-out;
+  padding: 10px;
+  background-color: rgb(204, 41, 41);
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -ms-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  left: 45%;
+}
+
+.home:hover {
+  transition-delay: 0.25s;
+  color: rgb(204, 41, 41);
+  background: rgb(250, 177, 177);
 }
 body {
   margin: 0;
@@ -537,8 +564,9 @@ fieldset:disabled a.btn {
   padding-left: 3rem !important;
 }
 .text-monospace {
-  font-family: "Poppins", sans-serif !important !important;
+  font-family: "Poppins", sans-serif !important;
 }
 .text-center {
   text-align: center !important;
+}
 }
