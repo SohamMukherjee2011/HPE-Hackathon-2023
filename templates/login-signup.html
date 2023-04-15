@@ -2,109 +2,110 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Login Page with a Matrix Rain made from scratch">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/login-signup.css')}}">
-    <script src="https://kit.fontawesome.com/a10bb03e8b.js" crossorigin="anonymous"></script>
-    <title>Login</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Login Page with a Matrix Rain made from scratch">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/login-signup.css')}}">
+  <script src="https://kit.fontawesome.com/a10bb03e8b.js" crossorigin="anonymous"></script>
+  <title>Log In | HackStopper</title>
 </head>
 
 <body>
-    <section>
-        <header>
-            <a href="/" class = 'a'>Cyber Security</a>
-            <div class="lists">
-                <ul class='list'>
-                    <li class="list2"><a href="/">Home</a></li>
-                    <li class="list2"><a href="/blogs">Blogs</a></li>
-                    <li class="list2"><a href="/login-signup">Login</a></li>
-                </ul>
-            </div>
-            <div class="hamburg">
-                <p>Menu <i class="fa-solid fa-bars"></i></p>
-            </div>
-        </header>
-    </section>
-    <div class="container">
-        <div class="loginbG">
-            <div class="box login">
-                <h2>Already have an Account ?</h2>
-                <span class="signin"><i class="fa-solid fa-arrow-right" id="rotate"></i></span>
-            </div>
-            <div class="box signup">
-                <h2>Dont have an Account ?</h2>
-                <span class="signup"><i class="fa-solid fa-arrow-right"></i></span>
-            </div>
-        </div>
-        <div class="formbG" id="formbG">
-            <div class="loginForm">
-                <form method = "post" name="login">
-                    <h3>Login</h3>
-                    {% with messages = get_flashed_messages()%}
-                        {%if messages%}
-                            {%for msg in messages%}
-                                {%if msg == "Wrong Password" or msg == "Invalid Email ID"%}
-                                    <p class="invalid">{{msg}}</p>
-                                {%endif%}
-                            {%endfor%}
-                        {%endif%}
-                    {%endwith%}
-                    <br>
-                    <input type="text" id="blank" required="required" placeholder="Email" name="email" autocomplete="off">
-                    <input type="password" id="blank" required="required" placeholder="Password" name="password">
-                    <input type="submit" value="Login" id = 'btn' name="login">
-                </form>
-                <a href="/forgot-password">Forgot Password? <span>Click Here!</span></a>
-            </div>
-            <div class="signupForm">
-                <form method = "post">
-                    <h3>Sign Up</h3>
-                    {% with messages = get_flashed_messages()%}
-                        {%if messages%}
-                            {%for msg in messages%}
-                                {%if msg == "Email ID already in use" %}
-                                    <p class="invalid">{{msg}}</p>
-                                {%endif%}
-                            {%endfor%}
-                        {%endif%}
-                    {%endwith%}
-                    <br>
-                    <input type="text" id="blank" required="required" placeholder="Email" class="two" name="email" autocomplete="off">
-                    <input type="password" id="blank" required="required" placeholder="Password" class="three" name="password" autocomplete="off">
-                    <input type="text" id="blank" required="required" placeholder="First Name" class="four" name="firstname" autocomplete="off">
-                    <input type="text" id="blank" required="required" placeholder="Last Name" class="five" name="lastname" autocomplete="off">
-                    <input type="text" id="blank" required="required" placeholder="Company Name" class="five" name="companyname" autocomplete="off">
-                    <input type="submit" value="Sign Up" id="btn" class="six" name="signup">
-                </form>
-            </div>
-        </div>
+  <section>
+    <header>
+      <a href="/" class='a'>HackStopper</a>
+      <div class="lists">
+        <ul class='list'>
+          <li class="list2"><a href="/">Home</a></li>
+          <li class="list2"><a href="/blogs">Blogs</a></li>
+          <li class="list2"><a href="/login-signup">Login</a></li>
+        </ul>
+      </div>
+      <div class="hamburg">
+        <p>Menu <i class="fa-solid fa-bars"></i></p>
+      </div>
+    </header>
+  </section>
+  <div class="container">
+    <div class="loginbG">
+      <div class="box login">
+        <h2>Already have an Account ?</h2>
+        <span class="signin"><i class="fa-solid fa-arrow-right" id="rotate"></i></span>
+      </div>
+      <div class="box signup">
+        <h2>Dont have an Account ?</h2>
+        <span class="signup"><i class="fa-solid fa-arrow-right"></i></span>
+      </div>
     </div>
+    <div class="formbG" id="formbG">
+      <div class="loginForm">
+        <form method="post" name="login">
+          <h3>Login</h3>
+          {% with messages = get_flashed_messages()%}
+            {%if messages%}
+                {%for msg in messages%}
+                    {%if msg == "Wrong Password" or msg == "Invalid Email ID"%}
+                        <p class="invalid">{{msg}}</p>
+                    {%endif%}
+                {%endfor%}
+            {%endif%}
+          {%endwith%}
+          <br>
+          <input type="text" id="blank" required="required" placeholder="Email" name="email" autocomplete="off">
+          <input type="password" id="blank" required="required" placeholder="Password" name="password">
+          <input type="submit" value="Login" id='btn' name="login">
+        </form>
+        <a href="/forgot-password">Forgot Password? <span>Click Here!</span></a>
+      </div>
+      <div class="signupForm">
+        <form method="post">
+          <h3>Sign Up</h3>
+          {% with messages = get_flashed_messages()%}
+            {%if messages%}
+                {%for msg in messages%}
+                    {%if msg == "Email ID already in use" %}
+                        <p class="invalid">{{msg}}</p>
+                    {%endif%}
+                {%endfor%}
+            {%endif%}
+          {%endwith%}
+          <br>
+          <input type="text" id="blank" required="required" placeholder="Email" class="two" name="email" autocomplete="off">
+          <input type="password" id="blank" required="required" placeholder="Password" class="three" name="password" autocomplete="off">
+          <input type="text" id="blank" required="required" placeholder="First Name" class="four" name="firstname" autocomplete="off">
+          <input type="text" id="blank" required="required" placeholder="Last Name" class="five" name="lastname" autocomplete="off">
+          <input type="text" id="blank" required="required" placeholder="Company Name" class="five" name="companyname" autocomplete="off">
+          <input type="submit" value="Sign Up" id="btn" class="six" name="signup">
+        </form>
+      </div>
+    </div>
+  </div>
 </body>
 <script src="{{url_for('static', filename='js/login-signup.js')}}"></script>
 {% with messages = get_flashed_messages()%}
-    {%if messages%}
-        {%for msg in messages%}
-            {%if msg == "Email ID already in use" %}
-                <script>
-                    signUpbtn = document.querySelector('.signup');
-                    signUpbtn.click();
-                </script>
-            {%endif%}
-        {%endfor%}
-    {%endif%}
+{%if messages%}
+{%for msg in messages%}
+{%if msg == "Email ID already in use" %}
+<script>
+  signUpbtn = document.querySelector('.signup');
+  signUpbtn.click();
+</script>
+{%endif%}
+{%endfor%}
+{%endif%}
 {%endwith%}
 {% with messages = get_flashed_messages()%}
-    {%if messages%}
-        {%for msg in messages%}
-            {%if msg == "Wrong Password" or msg == "Invalid Email ID"%}
-                <script>
-                    signInbtn = document.querySelector('.signin');
-                    signInbtn.click();
-                </script>
-            {%endif%}
-        {%endfor%}
-    {%endif%}
+{%if messages%}
+{%for msg in messages%}
+{%if msg == "Wrong Password" or msg == "Invalid Email ID"%}
+<script>
+  signInbtn = document.querySelector('.signin');
+  signInbtn.click();
+</script>
+{%endif%}
+{%endfor%}
+{%endif%}
 {%endwith%}
+
 </html>

@@ -1,26 +1,80 @@
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='/css/quiz_result.css')}}">
-    <title>Quiz Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='/css/quiz_result.css')}}">
+  <title>Quiz Page</title>
 </head>
+
 <body>
-    <!-- Top Section  -->
-    <div class="intro py-3 bg-white text-center">
-        <div class="container">
-            <h2 class="text-primary display-3 my-4">Quiz Time</h2>
-        </div>
+  <!-- Top Section  -->
+  <div class="intro py-3 bg-white text-center">
+    <div class="container">
+      <h2 class="text-primary display-3 my-4">Quiz Time</h2>
     </div>
-    <!-- Result section  -->
-    <div class="result py-4 d-none bg-light text-center">
-        <div class="container lead">
-            <p>Your Score is <span class="text-primary display-4 p-3">{{score}}%</span></p-3></p>
-        </div>
+  </div>
+  <!-- Result section  -->
+  <div class="result py-4 d-none bg-light text-center" id="show">
+    <div class="container" id="show">
+      <p id="show">Your Score is <span class="text-primary display-4 p-3">{{score}}%</span></p-3>
+      </p>
     </div>
-    <!-- Quiz Section  -->
-    <div class="quiz py-4 bg-primary">
-        <div class="container">  
-        <a href="/quizdashboard" class="home">Go Back</a>
+  </div>
+  <div class="quiz py-4 bg-primary">
+    <div class="container">
+      <h2 class="my-5 text-white">
+      </h2>
+      <form class="quiz-form text-light">
+        {%for title, question, correctoption, questionnumber, options, link  in quizdata %}
+        <div class="my-5">
+          <p class="lead font-weight-normal">{{questionnumber}}. {{question}}</p>
+          {%set optionslist = options.split(",")%}
+          <div class="form-check my-2 text-white-50">
+            {%set option = optionslist[0].replace("'", '')%}
+            {%if option.replace(' ', '') == correctoption.replace(' ', '')%}
+            <input type="radio" name="{{question}}" value="A" checked>
+            {%else%}
+            <input type="radio" name="{{question}}" value="A">
+            {%endif%}
+            <label class="form-check-label">{{option}}</label>
+          </div>
+          <div class="form-check my-2 text-white-50">
+            {%set option = optionslist[1].replace("'", '')%}
+            {%if option.replace(' ', '') == correctoption.replace(' ', '')%}
+                <input type="radio" name="{{question}}" value="B" checked>
+            {%else%}
+                <input type="radio" name="{{question}}" value="B">
+            {%endif%}
+            <label class="form-check-label">{{option}}</label>
+          </div>
+          <div class="form-check my-2 text-white-50">
+            {%set option = optionslist[2].replace("'", '')%}
+            {%if option.replace(' ', '') == correctoption.replace(' ', '')%}
+                <input type="radio" name="{{question}}" value="C" checked>
+            {%else%}
+                <input type="radio" name="{{question}}" value="C">
+            {%endif%}
+            <label class="form-check-label">{{option}}</label>
+            <div class="form-check my-2 text-white-50">
+            </div>
+            <div class="form-check my-2 text-white-50">
+              {%set option = optionslist[3].replace("'", '')%}
+              {%set option = optionslist[3].replace("[", '')%}
+              {%if option.replace(' ', '') == correctoption.replace(' ', '')%}
+                <input type="radio" name="{{question}}" value="D" checked>
+              {%else%}
+                <input type="radio" name="{{question}}" value="D">
+              {%endif%}
+              <label class="form-check-label">{{option}}</label>
+            </div>
+            <p> Correct Option is: {{correctoption}}</p>
+          </div>
+          {%endfor%}
+      </form>
+
+    </div>
+    <a href="/quizdashboard" class="home">Go Back</a>
 </body>
+
 </html>

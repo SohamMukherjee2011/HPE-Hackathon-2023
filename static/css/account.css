@@ -1,319 +1,314 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700;800&display=swap");
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
-@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
-@import url('https://fonts.googleapis.com/css?family=Droid+Serif:400,700');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700');
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+@import url("https://fonts.googleapis.com/css?family=Kaushan+Script");
+@import url("https://fonts.googleapis.com/css?family=Droid+Serif:400,700");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    user-select: none;
-    pointer-events: auto;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  user-select: none;
+  pointer-events: auto;
 }
-#submit{
-    width: 130px;
-    padding: 5px;
-    border-radius: 10px;
-    background: rgb(44, 204, 41);
-    outline: none;
-    border: none;
-    color: #fff;
-    position: relative;
-    top: 48px;
-    transition: 0.5s ease-in-out;
-    position: relative;
-    z-index: 3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 70px;
+#submit {
+  width: 130px;
+  padding: 5px;
+  border-radius: 10px;
+  background: rgb(44, 204, 41);
+  outline: none;
+  border: none;
+  color: #fff;
+  position: relative;
+  top: 48px;
+  transition: 0.5s ease-in-out;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 70px;
 }
 
 #submit:hover {
-    transition-delay: 0.2s;
-    color: rgb(44, 204, 41);
-    background: rgb(192, 250, 177);
-    cursor: pointer;
+  transition-delay: 0.2s;
+  color: rgb(44, 204, 41);
+  background: rgb(192, 250, 177);
+  cursor: pointer;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    transition: 0.5s;    
-    background-color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition: 0.5s;
+  background-color: rgb(0, 0, 0);
 }
 canvas {
-    position: absolute;
-    filter: blur(3px);
-    z-index: 1;
-    -webkit-filter: blur(3px);
-    overflow-x: hidden;
+  position: absolute;
+  filter: blur(3px);
+  z-index: 1;
+  -webkit-filter: blur(3px);
+  overflow-x: hidden;
 }
 section {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: transparent;
-    z-index: 2;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  z-index: 2;
 }
 
 header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 110px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    backdrop-filter: blur(5px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 110px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(5px);
 }
-#msg{
-    color:green;
-    display: block;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    transition: 2s;
-    -webkit-transition: 2s;
-    -moz-transition: 2s;
-    -ms-transition: 2s;
-    -o-transition: 2s;
+#msg {
+  color: green;
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  transition: 2s;
+  -webkit-transition: 2s;
+  -moz-transition: 2s;
+  -ms-transition: 2s;
+  -o-transition: 2s;
 }
 .visuallyhidden {
-    opacity: 0;
-  }
+  opacity: 0;
+}
 .hidden {
-    display: none;
-  }
-  
-
+  display: none;
+}
 
 header .a {
-    position: relative;
-    color: yellow;
-    font-family: 'Kaushan Script';
-    font-weight: 550;
-    font-size: 23px;
-    left: 1cm;
-    transition: 0.5s ease-in-out;
-    padding: 10px;
-    text-decoration: none;
+  position: relative;
+  color: yellow;
+  font-family: "Kaushan Script";
+  font-weight: 550;
+  font-size: 23px;
+  left: 1cm;
+  transition: 0.5s ease-in-out;
+  padding: 10px;
+  text-decoration: none;
 }
 header .a:hover {
-    color: #fec503;
-    cursor:pointer;
+  color: #fec503;
+  cursor: pointer;
 }
 
 header ul {
-    position: relative;
-    display: flex;
+  position: relative;
+  display: flex;
 }
 
 header ul li {
-    list-style: none;
+  list-style: none;
 }
 
 header ul li a {
-    display: block;
-    color: #C2C2C2;
-    text-decoration: none;
-    text-transform: uppercase;
-    padding: 20px;
-    transition: 0.5s ease-in-out;
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  display: block;
+  color: #c2c2c2;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 20px;
+  transition: 0.5s ease-in-out;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 header .hamburg {
-    display: block;
-    color: #C2C2C2;
-    text-decoration: none;
-    text-transform: uppercase;
-    padding: 20px;
-    transition: 0.5s ease-in-out;
-    display: none;
+  display: block;
+  color: #c2c2c2;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 20px;
+  transition: 0.5s ease-in-out;
+  display: none;
 }
 
 header ul li a:hover {
-    color: #fec503;
+  color: #fec503;
 }
 
 .container {
-    width: 1050px;
-    height: 600px;
-    position: absolute;
-    top: 115px;
-    left: 250px;
-    color: #fff;
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.127);
-    z-index: 2;
-    pointer-events: auto;
+  width: 1050px;
+  height: 600px;
+  position: absolute;
+  top: 115px;
+  left: 250px;
+  color: #fff;
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.127);
+  z-index: 2;
+  pointer-events: auto;
 }
 
 .dashboard {
-    list-style: none;
-    position: absolute;
-    font-size: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 80px;
-    padding: 50px;
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  list-style: none;
+  position: absolute;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding: 50px;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .dashboard .dashnav {
-    color: rgb(155, 153, 153);
-    text-decoration: none;
-    position: relative;
-    z-index: 100;
-    transition: 0.5s ease-in-out;
-    border-radius: 10px;
-    
+  color: rgb(155, 153, 153);
+  text-decoration: none;
+  position: relative;
+  z-index: 100;
+  transition: 0.5s ease-in-out;
+  border-radius: 10px;
 }
 
 .dashboard .dashnav a {
-    color: rgb(155, 153, 153);
-    text-decoration: none;
-    position: relative;
-    transition: 0.5s ease-in-out;
-    cursor: pointer;
-    display: inline-block;
-    border-radius: 20px;
+  color: rgb(155, 153, 153);
+  text-decoration: none;
+  position: relative;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 20px;
 }
 
 #bigger {
-    width: 200px;
+  width: 200px;
 }
 
 .dashboard .dashnav:hover {
-    background: rgb(23, 23, 23);
+  background: rgb(23, 23, 23);
 }
 
 .logout {
-    position: relative;
-    text-decoration: none;
-    padding: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    background: rgb(204, 41, 41);
-    color: #fff;
-    outline: none;
-    border: none;
-    text-align: center;
-    border-radius: 10px;
-    top: 490px;
-    left: 50px;
-    cursor: pointer;
-    transition: 0.5s ease-in-out;
+  position: relative;
+  text-decoration: none;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background: rgb(204, 41, 41);
+  color: #fff;
+  outline: none;
+  border: none;
+  text-align: center;
+  border-radius: 10px;
+  top: 490px;
+  left: 50px;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
 }
 
 .logout:hover {
-    transition-delay: 0.2s;
-    color: rgb(204, 41, 41);
-    background-color: rgb(250, 177, 177);
+  transition-delay: 0.2s;
+  color: rgb(204, 41, 41);
+  background-color: rgb(250, 177, 177);
 }
 
-
 .container .form {
-    width: 675px;
-    height: 525px;
-    position: absolute;
-    top: 30px;
-    left: 350px;
+  width: 675px;
+  height: 525px;
+  position: absolute;
+  top: 30px;
+  left: 350px;
 }
 
 .form .edit {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    align-content: flex-end;
-    gap: 45px;
-    position: absolute;
-    top: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  gap: 45px;
+  position: absolute;
+  top: 1px;
 }
 
 .form .edit input {
-    background: transparent;
-    outline: none;
-    border: none;
-    border-bottom: 3px solid #333;
-    border-radius: 2px;
-    position: relative;
-    width: 300px;
-    padding: 10px;
-    color: #fff;
-    font-size: 16px;
-    left: 350px;
+  background: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 3px solid #333;
+  border-radius: 2px;
+  position: relative;
+  width: 300px;
+  padding: 10px;
+  color: #fff;
+  font-size: 16px;
+  left: 350px;
 }
 
 .form .edit input::placeholder {
-    color: rgb(154, 154, 154);
-    font-size: 16px;
-    font-family: 'Roboto Mono', monospace;
+  color: rgb(154, 154, 154);
+  font-size: 16px;
+  font-family: "Roboto Mono", monospace;
 }
 
 .form .current {
-    display: flex;
-    flex-direction: column;
-    color: rgb(154, 154, 154);
-    font-size: 17px;
-    gap: 80px;
-    padding: 10px;
-    position: relative;
-    right: 20px;
+  display: flex;
+  flex-direction: column;
+  color: rgb(154, 154, 154);
+  font-size: 17px;
+  gap: 80px;
+  padding: 10px;
+  position: relative;
+  right: 20px;
 }
 
 .form .current label {
-    font-family: 'Roboto Mono', monospace;
-    font-size: 15px;
-    cursor: pointer;
-    position: relative;
-    z-index: 3;
+  font-family: "Roboto Mono", monospace;
+  font-size: 15px;
+  cursor: pointer;
+  position: relative;
+  z-index: 3;
 }
 
 .form .current .rick {
-    filter: blur(4px);
-    position: relative;
-    z-index: 4;
-    transition: 0.5s ease-in-out;
+  filter: blur(4px);
+  position: relative;
+  z-index: 4;
+  transition: 0.5s ease-in-out;
 }
 
 .form .current .rick.active {
-    transition-delay: 0.2s;
-    filter: blur(0px);
+  transition-delay: 0.2s;
+  filter: blur(0px);
 }
 
 .form .current .cemail {
-    position: relative;
-    bottom: 10px;
+  position: relative;
+  bottom: 10px;
 }
 
 .form .current .cusrname {
-    position: relative;
-    top: 80px;
+  position: relative;
+  top: 80px;
 }
 
 .form .current .cpassword {
-    position: relative;
-    top: 70px;
+  position: relative;
+  top: 70px;
 }
 
-
 .line {
-    background-color: rgb(20, 20, 20);
-    height: 500px;
-    width: 3px;
-    border-radius: 10px;
-    position: absolute;
-    left: 310px;
-    top: 30px;
+  background-color: rgb(20, 20, 20);
+  height: 500px;
+  width: 3px;
+  border-radius: 10px;
+  position: absolute;
+  left: 310px;
+  top: 30px;
 }

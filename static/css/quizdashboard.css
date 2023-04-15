@@ -21,6 +21,14 @@ body {
     transition: 0.5s;    
     background-color: rgb(0, 0, 0);
 }
+td{
+    display: flex;
+    flex-direction: column;
+}
+tr{
+    display: flex;
+    flex-direction: column;
+}
 canvas {
     position: absolute;
     filter: blur(3px);

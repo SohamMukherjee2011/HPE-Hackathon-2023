@@ -257,9 +257,7 @@ def quiz(quizname):
             optiondict['D'] = options[3]
             if optiondict[useroption] == y[2]:
                 score = score + 1
-                print(score)
                 result.append(1)
-                print(result)
             else:
                 result.append(0)
         score = int(score*25)
@@ -270,7 +268,9 @@ def quiz(quizname):
             if x[1] == quizname1:
                 sqlstuff.deleteSingleRow('quizresult', 'quizname', quizname1)
         sqlstuff.quizresultinsert('quizresult', session['email'], y[0], score, str(result), True, '/quizzes/' +  quizname)
-        return render_template('quiz_result.html', score=score)
+        # gets quiz questions data (same as in GET request part, without the average score part)
+        quizdata = sqlstuff.showField('quizzes', 'link','/quizzes/' + quizname)
+        return render_template('quiz_result.html', score=score, quizdata=quizdata)
             
 
 # runs the app only if this file is running

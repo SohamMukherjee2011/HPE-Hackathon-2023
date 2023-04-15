@@ -1,24 +1,26 @@
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/bloglist.css')}}">
-    <title>Blogs</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/bloglist.css')}}">
+  <title>Blogs</title>
 </head>
+
 <body>
-    <!-- Top Section  -->
-    <div class="intro py-3 bg-white text-center">
-        <div class="container">
-            <h2 class="text-primary display-3 my-4" id="article">Articles</h2>
-        </div>
-    </div>
-    <div class="quiz py-4 bg-primary">
-    <div class="container">  
-    <h2 class="my-5 text-white">
+  <!-- Top Section  -->
+  <div class="intro py-3 bg-white text-center">
     <div class="container">
-        {% for x in blogNumber %}
-        <div class="card shadow mb-5 mt-5">
-            <div class="card-body">
+      <h2 class="text-primary display-3 my-4" id="article">Articles</h2>
+    </div>
+  </div>
+  <div class="quiz py-4 bg-primary">
+    <div class="container">
+      <h2 class="my-5 text-white">
+        <div class="container">
+          {% for x in blogNumber %}
+            <div class="card shadow mb-5 mt-5">
+                <div class="card-body">
                 <div class="row">
                     <div class="col-md-8">
                         <h3>{{bloglist[x | int]}}</h3>
@@ -30,12 +32,13 @@
                     </div>
                 </div>
             </div>
+          {%endfor%}
         </div>
-        {%endfor%}
+      </h2>
+      <a href="/" class="home">Go to home</a>
     </div>
-    </div>
-    </h2>
-        <a href="/" class="home">Go to home</a>
-    </div>
+  </div>
+
 </body>
+
 </html>
